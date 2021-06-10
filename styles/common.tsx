@@ -4,23 +4,32 @@ export const FitUpStyles = makeStyles(() => ({
     root: {
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
         height: "100vh"
     },
     container: {
         display: "flex",
         flexWrap: "wrap",
-        justifyContent: "center",
     },
     column: {
-        flexDirection: "column"
+        flexDirection: "column",
+        justifyContent: "center",
     },
     row: {
-        flexDirection: "row"
+        flexDirection: "row",
+        justifyContent: "center",
     },
-    cardImg: {
-        height: "200px",
-        width: "200px"
+    footer: {
+        position: "fixed",
+        left: "0",
+        bottom:"0",
+        backgroundColor: "black",
+        color: "white",
+        padding: "20px",
+        width: "100%",
+        justifyContent: "start",
+    },
+    offset: {
+        marginLeft: "20px"
     },
     glassMorphism: {
         background: "rgba( 255, 255, 255, 0.4 )",
@@ -31,3 +40,4 @@ export const FitUpStyles = makeStyles(() => ({
         border: "1px solid rgba( 255, 255, 255, 0.18 )"
     }
 }));
+

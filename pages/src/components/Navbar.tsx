@@ -23,12 +23,11 @@ function Navbar() {
       >
         <AppBar 
           className={`
-          ${styles.container}
           ${styles.row}
           `}
           position="static"
-        >
-          <h1>FitUp</h1>
+          >
+            <h1>FitUp</h1>
           <Tabs 
             value={selectedTab}
             onChange={handleChange}
