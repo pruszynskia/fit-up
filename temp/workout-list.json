@@ -1,0 +1,69 @@
+
+    {
+        "chest": [
+            "barbell bench press", 
+            "cable crossover", 
+            "chest press", 
+            "dips", 
+            "incline dumbbell flies", 
+            "pushups"
+        ],
+        "back": [
+            "barbell row",
+            "barbell deadlift", 
+            "lat pulldown",
+            "quadruped dumbbell row",
+            "resistance band pull apart",
+            "single-arm dumbbell row", 
+            "wide dumbbell row"
+        ],
+        "arms": [
+            "overhead press",
+            "chin-up",
+            "EZ-bar upright row",
+            "incline dumbbell biceps curl",
+            "dumbbell lateral raise",
+            "cable triceps press-down"
+        ],
+        "triceps": [
+            "close-grip bench pres",
+            "cable rope tricep pushdown",
+            "lying triceps extension",
+            "tricep dips",
+            "diamond push-ups",
+            "bench dip",
+            "one-arm overhead extension",
+            "standard push-up"
+        ],
+        "biceps": [
+            "barbell curl",
+            "chin-up",
+            "EZ-bar preacher curl",
+            "hammer Curl",
+            "incline dumbbell curl",
+            "reverse-grip eent-over row",
+            "cable curl",
+            "concentration curl"
+        ],
+        "legs": [
+            "back squats",
+            "front squats",
+            "hack squats",
+            "leg press",
+            "stiff leg deadlifts",
+            "goodmornings",
+            "machine hamstring curls",
+            "machine leg extensions"
+        ],
+        "calves": [
+            "calves extensions"
+        ],
+        "abs": [
+            "bicycle crunches",
+            "crunches",
+            "hanging leg raises",
+            "plank"
+        ]
+    }
+
+  

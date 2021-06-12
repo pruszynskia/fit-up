@@ -1,4 +1,4 @@
-import { FitUpStyles } from '../../../styles/common';
+import { FitUpStyles } from '../../styles/common';
 
 function Footer() {
   const styles = FitUpStyles();

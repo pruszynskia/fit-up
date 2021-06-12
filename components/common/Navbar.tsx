@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { FitUpStyles } from '../../../styles/common';
+import { FitUpStyles } from '../../styles/common';
 import {
   AppBar, 
   Tabs,
   Tab,
 } from '@material-ui/core';
-import FitUp from './FitUp';
+import FitUp from '../FitUp';
+import EserciseList from '../ExerciseList';
 
 function Navbar() {
   const styles = FitUpStyles()
@@ -38,6 +39,7 @@ function Navbar() {
           </Tabs>
         </AppBar>
         { selectedTab === 0 && <FitUp />}
+        { selectedTab === 1 && <EserciseList />}
       </div>
     )
   }

@@ -1,0 +1,32 @@
+
+    {
+        "chest": [{
+            "name": "Chest Press",
+            "noSeries": "",
+            "load": "",
+            "date": "01062021"
+        },
+        
+            {
+                "name": "Chest Press",
+                "noSeries": "",
+                "load": "",
+                "date": "02062021"
+            }
+        
+        ],
+        "back": [
+        ],
+        "arms": [
+        ],
+        "triceps": [
+        ],
+        "biceps": [
+        ],
+        "legs": [
+        ],
+        "calves": [
+        ],
+        "abs": [
+        ]
+    }
