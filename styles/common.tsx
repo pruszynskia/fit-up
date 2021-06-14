@@ -19,6 +19,7 @@ export const FitUpStyles = makeStyles(() => ({
         justifyContent: "center",
     },
     footer: {
+        display: "flex",
         position: "fixed",
         left: "0",
         bottom:"0",
