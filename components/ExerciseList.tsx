@@ -14,7 +14,7 @@ const ExerciseList = () => {
             <h2>Chest</h2>
             {data.chest.map(bodyPart => {
                 return (
-                    <div 
+                    <div
                         className={`
                         ${styles.container}
                         ${styles.row}
