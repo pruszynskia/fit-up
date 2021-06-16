@@ -1,15 +1,62 @@
-import React from 'react';
-import workoutList from '../temp/workoutList.json';
-import {FitUpStyles} from '../styles/common';
-import {
-    Button
+import React, { useState } from 'react';
+import workoutList from '../../src/temp/workoutList.json';
+import { FitUpStyles } from '../../src/styles/common';
+import { 
+    Button,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+    TextField
 } from '@material-ui/core';
 
 const ExerciseList = () => {
     const styles = FitUpStyles();
     const data = workoutList;
+
+    //Form
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
+
     return (
         <div>
+            <div>
+                <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+                    New Workout Template
+                </Button>
+                <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title">Exercise List</DialogTitle>
+                    <DialogContent>
+                    <DialogContentText>
+                        Choose Exercise
+                    </DialogContentText>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Email Address"
+                        type="email"
+                        fullWidth
+                    />
+                    </DialogContent>
+                    <DialogActions>
+                    <Button onClick={handleClose} color="primary">
+                        Cancel
+                    </Button>
+                    <Button onClick={handleClose} color="primary">
+                        Subscribe
+                    </Button>
+                    </DialogActions>
+                </Dialog>
+            </div>
 
             <h2>Chest</h2>
             {data.chest.map(bodyPart => {
@@ -21,7 +68,6 @@ const ExerciseList = () => {
                         `}
                     >
                         <p>{bodyPart}</p>
-                        <Button>add</Button>
                     </div>
                 )
             })}
@@ -36,7 +82,6 @@ const ExerciseList = () => {
                         `}
                     >
                         <p>{bodyPart}</p>
-                        <Button>add</Button>
                     </div>
                 )
             })}
@@ -51,7 +96,6 @@ const ExerciseList = () => {
                         `}
                     >
                         <p>{bodyPart}</p>
-                        <Button>add</Button>
                     </div>
                 )
             })}
@@ -66,7 +110,6 @@ const ExerciseList = () => {
                         `}
                     >
                         <p>{bodyPart}</p>
-                        <Button>add</Button>
                     </div>
                 )
             })}
@@ -80,7 +123,6 @@ const ExerciseList = () => {
                         `}
                     >
                         <p>{bodyPart}</p>
-                        <Button>add</Button>
                     </div>
                 )
             })}
@@ -94,7 +136,6 @@ const ExerciseList = () => {
                         `}
                     >
                         <p>{bodyPart}</p>
-                        <Button>add</Button>
                     </div>
                 )
             })}
@@ -108,7 +149,6 @@ const ExerciseList = () => {
                         `}
                     >
                         <p>{bodyPart}</p>
-                        <Button>add</Button>
                     </div>
                 )
             })}
@@ -122,7 +162,6 @@ const ExerciseList = () => {
                         `}
                     >
                         <p>{bodyPart}</p>
-                        <Button>add</Button>
                     </div>
                 )
             })}

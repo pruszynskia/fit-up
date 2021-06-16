@@ -1,7 +1,7 @@
-import { FitUpStyles } from '../styles/common';
-import Footer from '../components/common/Footer';
-import Navbar from '../components/common/Navbar';
-import FitUp from '../components/FitUp';
+import { FitUpStyles } from '../src/styles/common';
+import Footer from '../src/components/common/Footer';
+import Navbar from '../src/components/common/Navbar';
+import FitUp from '../src/components/FitUp';
 
 export default function Home() {
   const styles = FitUpStyles();
