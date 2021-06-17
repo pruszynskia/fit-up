@@ -11,6 +11,7 @@ import {
     TextField
 } from '@material-ui/core';
 
+
 const ExerciseList = () => {
     const styles = FitUpStyles();
     const data = workoutList;
@@ -36,32 +37,27 @@ const ExerciseList = () => {
                     <DialogTitle id="form-dialog-title">Exercise List</DialogTitle>
                     <DialogContent>
                     <DialogContentText>
-                        Choose Exercise
+                        Choose exercise from the list:
                     </DialogContentText>
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="name"
-                        label="Email Address"
-                        type="email"
-                        fullWidth
-                    />
+                        <TextField>
+                
+                        </TextField>
                     </DialogContent>
                     <DialogActions>
                     <Button onClick={handleClose} color="primary">
                         Cancel
                     </Button>
                     <Button onClick={handleClose} color="primary">
-                        Subscribe
+                        Create
                     </Button>
                     </DialogActions>
                 </Dialog>
             </div>
 
             <h2>Chest</h2>
-            {data.chest.map(bodyPart => {
+            {data.chest.map((bodyPart, id) => {
                 return (
-                    <div
+                    <div key={id}
                         className={`
                         ${styles.container}
                         ${styles.row}
@@ -73,9 +69,9 @@ const ExerciseList = () => {
             })}
             
             <h2>Back</h2>
-            {data.back.map(bodyPart => {
+            {data.back.map((bodyPart, id) => {
                 return (
-                    <div 
+                    <div key={id}
                         className={`
                         ${styles.container}
                         ${styles.row}
@@ -87,9 +83,9 @@ const ExerciseList = () => {
             })}
             
             <h2>Arms</h2>
-            {data.arms.map(bodyPart => {
+            {data.arms.map((bodyPart, id) => {
                 return (
-                    <div 
+                    <div key={id} 
                         className={`
                         ${styles.container}
                         ${styles.row}
@@ -101,9 +97,9 @@ const ExerciseList = () => {
             })}
             
             <h2>Triceps</h2>
-            {data.triceps.map(bodyPart => {
+            {data.triceps.map((bodyPart, id) => {
                 return (
-                    <div 
+                    <div key={id} 
                         className={`
                         ${styles.container}
                         ${styles.row}
@@ -114,9 +110,9 @@ const ExerciseList = () => {
                 )
             })}
             <h2>Biceps</h2>
-            {data.biceps.map(bodyPart => {
+            {data.biceps.map((bodyPart, id) => {
                 return (
-                    <div 
+                    <div key={id} 
                         className={`
                         ${styles.container}
                         ${styles.row}
@@ -127,9 +123,9 @@ const ExerciseList = () => {
                 )
             })}
             <h2>Legs</h2>
-            {data.legs.map(bodyPart => {
+            {data.legs.map((bodyPart, id) => {
                 return (
-                    <div 
+                    <div key={id} 
                         className={`
                         ${styles.container}
                         ${styles.row}
@@ -140,9 +136,9 @@ const ExerciseList = () => {
                 )
             })}
             <h2>Calfes</h2>
-            {data.calfes.map(bodyPart => {
+            {data.calfes.map((bodyPart, id) => {
                 return (
-                    <div 
+                    <div key={id} 
                         className={`
                         ${styles.container}
                         ${styles.row}
@@ -153,9 +149,9 @@ const ExerciseList = () => {
                 )
             })}
             <h2>Abs</h2>
-            {data.abs.map(bodyPart => {
+            {data.abs.map((bodyPart, id) => {
                 return (
-                    <div 
+                    <div key={id} 
                         className={`
                         ${styles.container}
                         ${styles.row}
