@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import WorkoutForm from './WorkoutForm';
 
 import { FitUpStyles } from '../../src/styles/common';
@@ -14,6 +16,16 @@ import {
 
 
 const ExerciseList = () => {
+
+    const initialFormData = {
+        bodyPart: {
+            name: "",
+            sets: "",
+            reps: "",
+            load: "",
+            finished: false,
+        }
+    }
     
     const styles = FitUpStyles();
     
@@ -27,6 +39,24 @@ const ExerciseList = () => {
   
     const handleClose = () => {
       setOpen(false);
+    };
+
+    //Form
+    const dispatch = useDispatch();
+    const dataSelect = useSelector((state: any) => state);
+
+    let [formData, setFormData] = useState(initialFormData);
+
+    const handleSubmit =(e: any) => {
+        e.preventDefault();
+        console.log("formData");
+
+        dispatch({
+            type: 'ADD_WORKOUT'
+        })
+
+        handleClose;
+
     };
 
     return (
@@ -43,7 +73,7 @@ const ExerciseList = () => {
                     </DialogContentText>
                         
                         <WorkoutForm 
-                        
+
                         />
                         
                     </DialogContent>
@@ -51,7 +81,7 @@ const ExerciseList = () => {
                     <Button onClick={handleClose} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={handleSubmit} color="primary">
                         Create
                     </Button>
                     </DialogActions>

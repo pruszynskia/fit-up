@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import workoutList from '../../src/temp/workoutList.json';
 
 import {
@@ -5,8 +7,9 @@ import {
     TextField
 } from '@material-ui/core';
 
-const WorkoutForm = () => {
+const WorkoutForm = ( data1: any) => {
     const data = workoutList;
+
     return (
         <div>
             <form>
