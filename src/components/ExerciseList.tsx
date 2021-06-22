@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import WorkoutForm from './WorkoutForm';
 
-import { FitUpStyles } from '../../src/styles/common';
+import { fitUpStyles } from '../../src/styles/common';
 import { 
     Button,
     Dialog,
@@ -19,15 +19,17 @@ const ExerciseList = () => {
 
     const initialFormData = {
         bodyPart: {
+            date: "",
             name: "",
             sets: "",
             reps: "",
             load: "",
-            finished: false,
+            done: false,
+            note: ""
         }
     }
     
-    const styles = FitUpStyles();
+    const styles = fitUpStyles();
     
 
     //Dialog

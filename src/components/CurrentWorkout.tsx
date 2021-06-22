@@ -1,5 +1,5 @@
 
-const FitUp = () => {
+const CurrentWorkout = () => {
     return (
     <div>
         <h1>Title</h1>
@@ -7,4 +7,4 @@ const FitUp = () => {
     )
   }
   
-  export default FitUp
+  export default CurrentWorkout

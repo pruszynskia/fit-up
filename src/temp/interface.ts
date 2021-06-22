@@ -12,50 +12,74 @@ export interface BodyParts {
 export interface BodyPartsDetails {
     chest: Array<{
         date: number;
-        done: boolean;
+        name: string;
+        sets: number;
+        reps: number;
         load: number;
+        done: boolean;
         note: string;
     }>;
     back: Array<{
         date: number;
-        done: boolean;
+        name: string;
+        sets: number;
+        reps: number;
         load: number;
+        done: boolean;
         note: string;
     }>;
     arms: Array<{
         date: number;
-        done: boolean;
+        name: string;
+        sets: number;
+        reps: number;
         load: number;
+        done: boolean;
         note: string;
     }>;
     triceps: Array<{
         date: number;
-        done: boolean;
+        name: string;
         load: number;
+        sets: number;
+        reps: number;
+        done: boolean;
         note: string;
     }>;
     biceps: Array<{
         date: number;
-        done: boolean;
+        name: string;
+        sets: number;
+        reps: number;
         load: number;
+        done: boolean;
         note: string;
     }>;
     legs: Array<{
         date: number;
-        done: boolean;
+        name: string;
+        sets: number;
+        reps: number;
         load: number;
+        done: boolean;
         note: string;
     }>;
     calfes: Array<{
         date: number;
-        done: boolean;
+        name: string;
+        sets: number;
+        reps: number;
         load: number;
+        done: boolean;
         note: string;
     }>;
     abs: Array<{
         date: number;
-        done: boolean;
+        name: string;
+        sets: number;
+        reps: number;
         load: number;
+        done: boolean;
         note: string;
     }>;
 }
