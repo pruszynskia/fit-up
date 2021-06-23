@@ -1,8 +1,9 @@
+import WorkoutDetails from "./WorkoutDetails";
 
 const CurrentWorkout = () => {
     return (
     <div>
-        <h1>Title</h1>
+        <WorkoutDetails />
     </div>
     )
   }

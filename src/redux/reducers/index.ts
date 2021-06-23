@@ -17,7 +17,7 @@ const initialState = {
     }
 }
 
-export default function(state:any = initialState, action: any) {
+export default function rootReducer(state:any = initialState, action: any) {
     switch(action.type) {
         case ADD_WORKOUT: {
             console.log("add workout")

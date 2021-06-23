@@ -44,7 +44,7 @@ const ExerciseList = () => {
     };
 
     //Form
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const dataSelect = useSelector((state: any) => state);
 
     let [formData, setFormData] = useState(initialFormData);
@@ -53,9 +53,10 @@ const ExerciseList = () => {
         e.preventDefault();
         console.log("formData");
 
-        dispatch({
-            type: 'ADD_WORKOUT'
-        })
+        // dispatch({
+        //     type: 'ADD_WORKOUT',
+        //     payload: formData
+        // })
 
         handleClose;
 

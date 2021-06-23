@@ -1,19 +1,19 @@
-import { fitUpStyles } from '../../styles/common';
+import useStyles from './Footer.styles'
 
 function Footer() {
-  const styles = fitUpStyles();
+  const classes = useStyles()
     return (
       <div
-        className={`
-        ${styles.container}
-        ${styles.row}
-        ${styles.footer}
+      className={`
+      ${classes.container}
+        ${classes.row}
+        ${classes.footer}
         `}
       >
         <div>
           <h2>FitUp</h2>
         </div>
-        <div className={styles.offset}>
+        <div className={classes.offset}>
           <div>
             <h3>Contact us:</h3>
             <p>(+66) 666 666 666</p>
@@ -23,5 +23,5 @@ function Footer() {
       </div>
     )
   }
-  
+
   export default Footer

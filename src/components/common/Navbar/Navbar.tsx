@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { fitUpStyles } from '../../styles/common';
+import useStyles from './Navbar.styles';
 import {
   AppBar, 
   Tabs,
   Tab,
 } from '@material-ui/core';
-import CurrentWorkout from '../CurrentWorkout';
-import EserciseList from '../ExerciseList';
+import CurrentWorkout from '../../CurrentWorkout';
+import ExerciseList from '../../ExerciseList';
 
 function Navbar() {
-  const styles = fitUpStyles()
+  const classes = useStyles();
   // Tabs
   const [selectedTab, setSelectedTab] = useState(0);
   const handleChange = (event: any, newTab: any) => {
@@ -34,7 +34,7 @@ function Navbar() {
           </Tabs>
         </AppBar>
         { selectedTab === 0 && <CurrentWorkout />}
-        { selectedTab === 1 && <EserciseList />}
+        { selectedTab === 1 && <ExerciseList />}
       </div>
     )
   }

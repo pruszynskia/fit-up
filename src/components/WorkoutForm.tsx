@@ -7,7 +7,7 @@ import {
     TextField
 } from '@material-ui/core';
 
-const WorkoutForm = ( data1: any) => {
+const WorkoutForm = ( setFormData: any ) => {
     const data = workoutList;
 
     return (
@@ -21,7 +21,8 @@ const WorkoutForm = ( data1: any) => {
                 <h3>Chest</h3>
                 {data.chest.map((exercise: any, id: any) => 
                         <div key={id}>
-                            <Checkbox 
+                            <Checkbox
+                            onChange={(e: any) => {setFormData}}
                             />
                             {exercise}
                         </div>
