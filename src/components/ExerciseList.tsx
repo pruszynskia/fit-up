@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-
 import WorkoutForm from './WorkoutForm';
 
 import { fitUpStyles } from '../../src/styles/common';
@@ -15,23 +13,10 @@ import {
 } from '@material-ui/core';
 
 
-const ExerciseList = () => {
-
-    const initialFormData = {
-        bodyPart: {
-            date: "",
-            name: "",
-            sets: "",
-            reps: "",
-            load: "",
-            done: false,
-            note: ""
-        }
-    }
+const ExerciseList = ( {formData, setFormData, handleSubmit}: any ) => {
     
     const styles = fitUpStyles();
     
-
     //Dialog
     const [open, setOpen] = React.useState(false);
 
@@ -40,27 +25,11 @@ const ExerciseList = () => {
     };
   
     const handleClose = () => {
-      setOpen(false);
+        setOpen(false);
     };
-
-    //Form
-    // const dispatch = useDispatch();
-    const dataSelect = useSelector((state: any) => state);
-
-    let [formData, setFormData] = useState(initialFormData);
-
-    const handleSubmit =(e: any) => {
-        e.preventDefault();
-        console.log("formData");
-
-        // dispatch({
-        //     type: 'ADD_WORKOUT',
-        //     payload: formData
-        // })
-
-        handleClose;
-
-    };
+    const handleForm = () => {
+        setOpen(false);
+    } 
 
     return (
         <div>
@@ -77,16 +46,13 @@ const ExerciseList = () => {
                         
                         <WorkoutForm 
 
-                        />
+                    />
                         
                     </DialogContent>
                     <DialogActions>
-                    <Button onClick={handleClose} color="primary">
-                        Cancel
-                    </Button>
-                    <Button onClick={handleSubmit} color="primary">
-                        Create
-                    </Button>
+                        <Button type="submit" onClick={handleForm} color="primary">
+                            Create
+                        </Button>
                     </DialogActions>
                 </Dialog>
             </div>

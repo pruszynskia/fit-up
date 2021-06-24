@@ -1,8 +1,11 @@
+import ExerciseList from "./ExerciseList";
+import WorkoutForm from "./WorkoutForm";
+const WorkoutDetails = (formData: any) => {
 
-const WorkoutDetails = () => {
+    console.log('DATA', formData)
     return (
         <div>
-            WorkoutDetails
+            {formData.bodyPart}
         </div>
     )
 }

@@ -27,7 +27,7 @@ export default function rootReducer(state:any = initialState, action: any) {
             };
         }
         case DELETE_WORKOUT: {
-            console.log(action.payload)
+            console.log("delete workout", action.payload)
             return {
                 ...state,
                 workout: 
@@ -35,6 +35,7 @@ export default function rootReducer(state:any = initialState, action: any) {
             };
         }
         case EDIT_WORKOUT: {
+            console.log("edit workout")
             return{
                 ...state,
                 workout:
