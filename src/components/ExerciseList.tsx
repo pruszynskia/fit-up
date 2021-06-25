@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useDispatch} from 'react-redux'
 
 import WorkoutForm from './WorkoutForm';
 
@@ -13,9 +14,10 @@ import {
 } from '@material-ui/core';
 
 
-const ExerciseList = ( {formData, setFormData, handleSubmit}: any ) => {
+const ExerciseList = () => {
     
     const styles = fitUpStyles();
+    const dispatch = useDispatch()
     
     //Dialog
     const [open, setOpen] = React.useState(false);
@@ -27,8 +29,19 @@ const ExerciseList = ( {formData, setFormData, handleSubmit}: any ) => {
     const handleClose = () => {
         setOpen(false);
     };
-    const handleForm = () => {
+
+    const handleSubmit = (e: any, formData: any) => {
+        e.preventDefault();
+        console.log("formData", formData);
+
+        dispatch({
+            type: 'ADD_WORKOUT',
+            payload: formData
+        });
+    };
+    const handleForm = (e: any, formData: any) => {
         setOpen(false);
+        handleSubmit(e, formData);
     } 
 
     return (
@@ -44,15 +57,13 @@ const ExerciseList = ( {formData, setFormData, handleSubmit}: any ) => {
                         Choose exercise from the list:
                     </DialogContentText>
                         
-                        <WorkoutForm 
+                        <WorkoutForm handleForm={handleForm}
 
                     />
                         
                     </DialogContent>
                     <DialogActions>
-                        <Button type="submit" onClick={handleForm} color="primary">
-                            Create
-                        </Button>
+                        
                     </DialogActions>
                 </Dialog>
             </div>

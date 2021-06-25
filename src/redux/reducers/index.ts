@@ -10,7 +10,7 @@ import {v4} from 'uuid';
 import data from '../../../src/temp/workoutList.json'
 
 const initialState = {
-    workout: data,
+    workout: [],
     visibilityFilters: {
         addJobOfferFilter: false,
         editJobOfferFilter: false
@@ -20,7 +20,7 @@ const initialState = {
 export default function rootReducer(state:any = initialState, action: any) {
     switch(action.type) {
         case ADD_WORKOUT: {
-            console.log("add workout")
+            console.log("add workout", action.payload)
             return {
                 ...state,
                 workout: [...state.workout, {id: v4(), ...action.payload}]
