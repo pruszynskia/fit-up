@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 
-export const fitUpStyles = makeStyles(() => ({
+export default makeStyles(() => ({
     root: {
         display: "flex",
         flexDirection: "column",

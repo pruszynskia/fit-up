@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux'
 
 import WorkoutForm from './WorkoutForm';
 
-import { fitUpStyles } from '../../src/styles/common';
+import useStyles from '../../src/styles/common';
 import { 
     Button,
     Dialog,
@@ -16,7 +16,7 @@ import {
 
 const ExerciseList = () => {
     
-    const styles = fitUpStyles();
+    const styles = useStyles();
     const dispatch = useDispatch()
     
     //Dialog

@@ -1,19 +1,18 @@
+import React from 'react'
+import classnames from 'classnames'
+
 import useStyles from './Footer.styles'
 
 function Footer() {
   const classes = useStyles()
     return (
       <div
-      className={`
-      ${classes.container}
-        ${classes.row}
-        ${classes.footer}
-        `}
+      className={classnames(classes.container, classes.row, classes.footer)}
       >
         <div>
           <h2>FitUp</h2>
         </div>
-        <div className={classes.offset}>
+        <div >
           <div>
             <h3>Contact us:</h3>
             <p>(+66) 666 666 666</p>

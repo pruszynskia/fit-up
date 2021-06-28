@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import workoutList from '../../src/temp/workoutList.json';
+import initialState from '../../src/temp/initialState.json'
 
 import {
     Button,
@@ -15,26 +16,14 @@ interface WorkoutFormProps {
 }
 
 const WorkoutForm = ({handleForm}: WorkoutFormProps) => {
-    const initialFormData = {
-        bodyPart: {
-            date: "",
-            name: "",
-            sets: "",
-            reps: "",
-            load: "",
-            done: false,
-            note: ""
-        }
-    }
+
 
     const data = workoutList;
-    let [formData, setFormData] = useState<any>({
-        name: ""
-    });
+    let [formData, setFormData] = useState<any>(initialState);
 
     /**
      * 
-     */
+     */ 
 
     // Form
     const dispatch = useDispatch();
@@ -45,7 +34,9 @@ const WorkoutForm = ({handleForm}: WorkoutFormProps) => {
 
     const handleChange = (event: React.ChangeEvent<{value: unknown; name: string}>) => {
         setFormData({
+            ...formData,
             [event.target.name]: event.target.value as string
+
         })
     }
     
@@ -55,7 +46,7 @@ const WorkoutForm = ({handleForm}: WorkoutFormProps) => {
             <form onSubmit={(e: any) => handleForm(e, formData)}>
                 <TextField
                     label="Title"
-                    name="title"
+                    name="name"
                     value={formData.name}
                     onChange={handleChange}
 
@@ -64,8 +55,21 @@ const WorkoutForm = ({handleForm}: WorkoutFormProps) => {
                 {data.chest.map((exercise: any, id: any) => 
                         <div key={id}>
                             <Checkbox
-                            value={formData.name}
-                            onChange={(e: any) => console.log(e.target.value)}
+                            name={exercise}
+                            onChange={(e: any) => {
+                                if(e.target.checked) setFormData({
+                                    ...formData,
+                                    chest: [...formData.chest, {
+                                        name: exercise
+                                    }]
+                                })
+                                else {
+                                    setFormData({
+                                        ...formData,
+                                        chest: formData.chest.filter((ex: any) => ex.name !== exercise)
+                                    })
+                                }
+                            }}
                             />
                             {exercise}
                         </div>
