@@ -12,8 +12,6 @@ import {
 } from '@material-ui/core';
 
 import { useSelector } from 'react-redux';
-import ExerciseList from "./ExerciseList";
-import WorkoutForm from "./WorkoutForm";
 
 interface RootState {
     workout: any
@@ -31,7 +29,9 @@ const WorkoutDetails = () => {
     return (
         <div>
             <div>
-                {data.map((pos: any) => pos.name)}
+                <Button>
+                    {data.map((pos: any) => pos.name)}
+                </Button>
             </div>
             <button onClick={() => setSomething(true)}>click</button>
             <span className={classnames("material-icons", {

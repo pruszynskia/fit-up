@@ -1,4 +1,4 @@
-import WorkoutDetails from "./WorkoutDetails";
+import WorkoutDetails from "../WorkoutDetails/WorkoutDetails";
 
 const CurrentWorkout = () => {
     return (

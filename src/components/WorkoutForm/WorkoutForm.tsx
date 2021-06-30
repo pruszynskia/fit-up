@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import workoutList from '../../src/temp/workoutList.json';
-import initialState from '../../src/temp/initialState.json'
+import workoutList from '../../temp/workoutList.json';
+import initialState from '../../temp/initialState.json'
 
 import {
     Button,

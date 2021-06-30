@@ -5,8 +5,8 @@ import {
   Tabs,
   Tab,
 } from '@material-ui/core';
-import CurrentWorkout from '../../CurrentWorkout';
-import ExerciseList from '../../ExerciseList';
+import CurrentWorkout from '../../CurrentWorkout/CurrentWorkout';
+import ExerciseList from '../../ExerciseList/ExerciseList';
 
 function Navbar() {
   const classes = useStyles();

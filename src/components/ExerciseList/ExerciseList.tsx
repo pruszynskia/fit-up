@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import {useDispatch} from 'react-redux'
 
-import WorkoutForm from './WorkoutForm';
+import WorkoutForm from '../WorkoutForm/WorkoutForm';
 
-import useStyles from '../../src/styles/common';
+import useStyles from '../../styles/common';
 import { 
     Button,
     Dialog,
