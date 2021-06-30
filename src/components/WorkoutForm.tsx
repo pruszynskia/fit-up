@@ -40,7 +40,6 @@ const WorkoutForm = ({handleForm}: WorkoutFormProps) => {
         })
     }
     
-    console.log(formData)
     return (
         <div>
             <form onSubmit={(e: any) => handleForm(e, formData)}>

@@ -32,7 +32,7 @@ const ExerciseList = () => {
 
     const handleSubmit = (e: any, formData: any) => {
         e.preventDefault();
-        console.log("formData", formData);
+        console.log("formData submited", formData);
 
         dispatch({
             type: 'ADD_WORKOUT',
