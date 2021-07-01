@@ -1,1 +1,1 @@
-export {default} from './CurrentWorkout';
+export {default} from './CurrentWorkouts';

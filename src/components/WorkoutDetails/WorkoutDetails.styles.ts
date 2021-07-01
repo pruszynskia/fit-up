@@ -4,6 +4,9 @@ export default makeStyles(theme => ({
     root: {
         display: "flex",
         flexDirection: "column",
+        alignItems: "flex-start",
+        justifyContent: "flex-start",
+        // flexDirection: "column",
         height: "100vh"
     },
     container: {
@@ -17,17 +20,6 @@ export default makeStyles(theme => ({
     row: {
         flexDirection: "row",
         justifyContent: "center",
-    },
-    footer: {
-        display: "flex",
-        position: "fixed",
-        left: "0",
-        bottom:"0",
-        backgroundColor: "black",
-        color: "white",
-        padding: "20px",
-        width: "100%",
-        justifyContent: "start",
     },
     offset: {
         marginLeft: "20px"

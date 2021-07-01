@@ -5,7 +5,7 @@ import {
   Tabs,
   Tab,
 } from '@material-ui/core';
-import CurrentWorkout from '../../CurrentWorkout/CurrentWorkout';
+import CurrentWorkout from '../../CurrentWorkout/CurrentWorkouts';
 import ExerciseList from '../../ExerciseList/ExerciseList';
 
 function Navbar() {

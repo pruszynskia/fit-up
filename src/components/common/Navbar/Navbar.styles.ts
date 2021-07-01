@@ -18,17 +18,6 @@ export default makeStyles(theme => ({
         flexDirection: "row",
         justifyContent: "center",
     },
-    footer: {
-        display: "flex",
-        position: "fixed",
-        left: "0",
-        bottom:"0",
-        backgroundColor: "black",
-        color: "white",
-        padding: "20px",
-        width: "100%",
-        justifyContent: "start",
-    },
     offset: {
         marginLeft: "20px"
     }

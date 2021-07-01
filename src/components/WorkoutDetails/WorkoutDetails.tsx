@@ -1,12 +1,8 @@
 import React, {useState} from 'react';
 import classnames from 'classnames';
-import {makeStyles } from '@material-ui/core/styles';
+import useStyles from './WorkoutDetails.styles';
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        background: theme.palette.primary.dark
-    }
-}));
+import DialogButton from '../common/DialogButton/DialogButton';
 import {
     Button
 } from '@material-ui/core';
@@ -17,26 +13,27 @@ interface RootState {
     workout: any
 }
 
-const WorkoutDetails = () => {
+interface WorkoutDetailsProps {
+    data?: any
+}
+
+const WorkoutDetails = ({data}: WorkoutDetailsProps) => {
     const [something, setSomething] = useState(false);
     const classes = useStyles();
 
     const a = 5;
 
-    let data = useSelector((state: RootState) => state.workout)
 
     console.log("formData print", data);
     return (
-        <div>
-            <div>
-                <Button>
-                    {data.map((pos: any) => pos.name)}
-                </Button>
-            </div>
-            <button onClick={() => setSomething(true)}>click</button>
-            <span className={classnames("material-icons", {
-                [classes.root]: something
-            })} >fingerprint</span>
+        <div className={classnames(classes.root)}>
+         {/* <Button onClick={handleOpen}>{data.name}</Button>
+         <Dialog></Dialog> */}
+            <DialogButton label={data.name}>
+                <div>
+                    content
+                </div>
+            </DialogButton>
         </div>
     )
 }
