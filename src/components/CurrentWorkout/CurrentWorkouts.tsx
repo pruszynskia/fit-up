@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button'
 import WorkoutDetails from "../WorkoutDetails/WorkoutDetails";
 import useStyles from './CurrentWorkouts.styles';
 
+import DialogButton from "../common/DialogButton/DialogButton";
+
 const CurrentWorkout = () => {
     const classes = useStyles();
     const router = useRouter();
@@ -14,13 +16,7 @@ const CurrentWorkout = () => {
     
     return (
     <div className={classnames(classes.root)}>
-        {
-            data.map((d: any) => (
-                <Button onClick={() => console.log("test")}>
-                    {d.name}
-                </Button>
-            ))
-        }
+        <DialogButton />
     </div>
     )
   }

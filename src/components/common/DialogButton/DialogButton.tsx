@@ -6,6 +6,7 @@ import useStyles from './DialogButton.styles';
 import classnames from 'classnames';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
 
 // interface DialogButtonProps {
 //      children: React.ReactNode
@@ -38,23 +39,31 @@ const DialogButton = ({label, chidren}: any) => {
     //Data
         const data = useSelector((state: any) => state.workout)
 
+        
     return (
         <div className={classnames(classes.root)}>
             <div>
                 {
-                data.map((d: any) => (
-                    <Button onClick={() => console.log("test")}>
+                data.map((d: any, id: any) => (
+                    <div key={id} className={classnames(classes.container)}>
+                    <Button onClick={handleClickOpen}
+                    >
                         {d.name}
                     </Button>
+                    <Dialog
+                        open={open}
+                        onClose={handleClose}
+                    >
+                        <DialogContent className={classnames(classes.container)}>
+                            {d.name}
+                            {/* <p>{data[d].chest}</p> */}
+                        </DialogContent>
+                    </Dialog>
+                    </div>
                 ))
                 }
             </div>
-            <Dialog
-                open={open}
-                onClose={handleClose}
-            >
-                {children}
-            </Dialog>
+            
         </div>
     )
 }

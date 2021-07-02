@@ -88,7 +88,20 @@ const WorkoutForm = ({handleForm}: WorkoutFormProps) => {
                         <div key={id}>
                             <Checkbox
                             value={formData.name}
-                            onChange={(e: any) => console.log(exercise)}
+                            onChange={(e: any) => {
+                                if(e.target.checked) setFormData({
+                                    ...formData,
+                                    arms: [...formData.arms, {
+                                        name: exercise
+                                    }]
+                                })
+                                else {
+                                    setFormData({
+                                        ...formData,
+                                        arms: formData.arms.filter((ex: any) => ex.name !== exercise)
+                                    })
+                                }
+                            }}
                             />
                             {exercise}
                         </div>
@@ -98,7 +111,20 @@ const WorkoutForm = ({handleForm}: WorkoutFormProps) => {
                         <div key={id}>
                             <Checkbox
                             value={formData.name}
-                            onChange={(e: any) => console.log(exercise)} 
+                            onChange={(e: any) => {
+                                if(e.target.checked) setFormData({
+                                    ...formData,
+                                    triceps: [...formData.triceps, {
+                                        name: exercise
+                                    }]
+                                })
+                                else {
+                                    setFormData({
+                                        ...formData,
+                                        triceps: formData.triceps.filter((ex: any) => ex.name !== exercise)
+                                    })
+                                }
+                            }}
                             />
                             {exercise}
                         </div>
@@ -108,7 +134,20 @@ const WorkoutForm = ({handleForm}: WorkoutFormProps) => {
                         <div key={id}>
                             <Checkbox
                             value={formData.name}
-                            onChange={(e: any) => console.log(exercise)} 
+                            onChange={(e: any) => {
+                                if(e.target.checked) setFormData({
+                                    ...formData,
+                                    biceps: [...formData.biceps, {
+                                        name: exercise
+                                    }]
+                                })
+                                else {
+                                    setFormData({
+                                        ...formData,
+                                        biceps: formData.biceps.filter((ex: any) => ex.name !== exercise)
+                                    })
+                                }
+                            }} 
                             />
                             {exercise}
                         </div>
@@ -118,7 +157,20 @@ const WorkoutForm = ({handleForm}: WorkoutFormProps) => {
                         <div key={id}>
                             <Checkbox
                             value={formData.name}
-                            onChange={(e: any) => console.log(exercise)} 
+                            onChange={(e: any) => {
+                                if(e.target.checked) setFormData({
+                                    ...formData,
+                                    legs: [...formData.legs, {
+                                        name: exercise
+                                    }]
+                                })
+                                else {
+                                    setFormData({
+                                        ...formData,
+                                        legs: formData.legs.filter((ex: any) => ex.name !== exercise)
+                                    })
+                                }
+                            }}
                             />
                             {exercise}
                         </div>
@@ -128,7 +180,20 @@ const WorkoutForm = ({handleForm}: WorkoutFormProps) => {
                         <div key={id}>
                             <Checkbox
                             value={formData.name}
-                            onChange={(e: any) => console.log(exercise)}
+                            onChange={(e: any) => {
+                                if(e.target.checked) setFormData({
+                                    ...formData,
+                                    calfes: [...formData.calfes, {
+                                        name: exercise
+                                    }]
+                                })
+                                else {
+                                    setFormData({
+                                        ...formData,
+                                        calfes: formData.calfes.filter((ex: any) => ex.name !== exercise)
+                                    })
+                                }
+                            }}
                             />
                             {exercise}
                         </div>
@@ -138,7 +203,20 @@ const WorkoutForm = ({handleForm}: WorkoutFormProps) => {
                         <div key={id}>
                             <Checkbox
                             value={formData.name}
-                            onChange={(e: any) => console.log(exercise)} 
+                            onChange={(e: any) => {
+                                if(e.target.checked) setFormData({
+                                    ...formData,
+                                    abs: [...formData.abs, {
+                                        name: exercise
+                                    }]
+                                })
+                                else {
+                                    setFormData({
+                                        ...formData,
+                                        abs: formData.abs.filter((ex: any) => ex.name !== exercise)
+                                    })
+                                }
+                            }}
                             />
                             {exercise}
                         </div>
