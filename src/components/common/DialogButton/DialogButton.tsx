@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 
+import WorkoutDetails from '../../WorkoutDetails'
+
 // interface DialogButtonProps {
 //      children: React.ReactNode
 // }
@@ -19,7 +21,12 @@ import DialogContent from '@material-ui/core/DialogContent';
 //      </div>
 // </DialogButton>
 
-const DialogButton = ({label, chidren}: any) => {
+interface DialogButtonProps {
+    label?: string;
+    children?: React.ReactNode
+}
+
+const DialogButton = ({label, children}: DialogButtonProps) => {
     const classes = useStyles();
 
     //Dialog
@@ -37,33 +44,22 @@ const DialogButton = ({label, chidren}: any) => {
         const router = useRouter();
     
     //Data
-        const data = useSelector((state: any) => state.workout)
 
         
     return (
-        <div className={classnames(classes.root)}>
-            <div>
-                {
-                data.map((d: any, id: any) => (
-                    <div key={id} className={classnames(classes.container)}>
+        <div className={classnames(classes.root, classes.column)}>
+                    <div key={label} className={classnames(classes.container)}>
                     <Button onClick={handleClickOpen}
                     >
-                        {d.name}
+                        {label}
                     </Button>
                     <Dialog
                         open={open}
                         onClose={handleClose}
                     >
-                        <DialogContent className={classnames(classes.container)}>
-                            {d.name}
-                            {/* <p>{data[d].chest}</p> */}
-                        </DialogContent>
+                        {children}
                     </Dialog>
                     </div>
-                ))
-                }
-            </div>
-            
         </div>
     )
 }

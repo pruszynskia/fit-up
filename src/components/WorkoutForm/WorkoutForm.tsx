@@ -78,7 +78,20 @@ const WorkoutForm = ({handleForm}: WorkoutFormProps) => {
                         <div key={id}>
                             <Checkbox
                             value={formData.name}
-                            onChange={(e: any) => console.log(exercise)}
+                            onChange={(e: any) => {
+                                if(e.target.checked) setFormData({
+                                    ...formData,
+                                    back: [...formData.back, {
+                                        name: exercise
+                                    }]
+                                })
+                                else {
+                                    setFormData({
+                                        ...formData,
+                                        back: formData.back.filter((ex: any) => ex.name !== exercise)
+                                    })
+                                }
+                            }}
                             />
                             {exercise}
                         </div>

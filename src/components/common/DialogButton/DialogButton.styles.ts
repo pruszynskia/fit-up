@@ -4,7 +4,7 @@ export default makeStyles(theme => ({
     root: {
         display: "flex",
         flexDirection: "column",
-        height: "100vh"
+        
     },
     container: {
         display: "flex",

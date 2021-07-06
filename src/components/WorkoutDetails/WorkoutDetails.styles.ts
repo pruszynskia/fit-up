@@ -6,16 +6,19 @@ export default makeStyles(theme => ({
         flexDirection: "column",
         alignItems: "flex-start",
         justifyContent: "flex-start",
+        padding: "10px"
         // flexDirection: "column",
-        height: "100vh"
+        // height: "100vh"
     },
     container: {
         display: "flex",
         flexWrap: "wrap",
+        padding: "10px"
     },
     column: {
+        display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
+        // justifyContent: "center",
     },
     row: {
         flexDirection: "row",
@@ -23,5 +26,11 @@ export default makeStyles(theme => ({
     },
     offset: {
         marginLeft: "20px"
+    },
+    title: {
+        textTransform: "uppercase"
+    }, 
+    bold: {
+        fontWeight: "bold"
     }
 }))
