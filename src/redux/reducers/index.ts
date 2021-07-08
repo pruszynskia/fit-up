@@ -20,14 +20,12 @@ const initialState = {
 export default function rootReducer(state:any = initialState, action: any) {
     switch(action.type) {
         case ADD_WORKOUT: {
-            console.log("add workout", action.payload)
             return {
                 ...state,
                 workout: [...state.workout, {id: v4(), ...action.payload}]
             };
         }
         case DELETE_WORKOUT: {
-            console.log("delete workout", action.payload)
             return {
                 ...state,
                 workout: 
@@ -35,7 +33,6 @@ export default function rootReducer(state:any = initialState, action: any) {
             };
         }
         case EDIT_WORKOUT: {
-            console.log("edit workout")
             return{
                 ...state,
                 workout:

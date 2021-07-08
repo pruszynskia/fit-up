@@ -2,6 +2,10 @@ import React from 'react';
 import classnames from 'classnames';
 import useStyles from './WorkoutDetails.styles';
 
+import workoutList from '../../temp/workoutList.json';
+
+import OptionsMenu from '../common/OptionsMenu';
+
 interface RootState {
     workout: any
 };
@@ -13,12 +17,18 @@ interface WorkoutDetailsProps {
 const WorkoutDetails = ({workout}: WorkoutDetailsProps) => {
     const classes = useStyles();
 
-    console.log("Workout print", workout);
+    const bodyParts = ["chest", "back", "arm", "triceps", "biceps", "legs", "calfes", "abs"];
+    const exercises: Array<{name: string; bodyPart: string}> = workoutList;
+
     return (
         <div className={classnames(classes.root)}>
-            <span className={classnames(classes.title, classes.bold)}>{workout?.name}</span>
+            <span className={classnames(classes.title, classes.bold)}>
+                <span>{workout?.name}</span>
+                <span><OptionsMenu /></span>
+            </span>
+
             {/* Chest */}
-            {workout?.chest.length && (
+            {Boolean(workout?.chest.length) && (
                 <div 
                     className={classnames(
                         classes.container, 
@@ -46,7 +56,7 @@ const WorkoutDetails = ({workout}: WorkoutDetailsProps) => {
             )}
 
             {/* Back */}
-            {workout?.back.length && (
+            {Boolean(workout?.back.length) && (
                 <div 
                     className={classnames(
                         classes.container, 
@@ -73,8 +83,8 @@ const WorkoutDetails = ({workout}: WorkoutDetailsProps) => {
                 </div>
             )}
 
-            {/* Arms */}
-            {workout?.arms.length && (
+            {/* Arms */} 
+            {Boolean(workout?.arms.length) && (
                 <div 
                     className={classnames(
                         classes.container, 
@@ -102,7 +112,7 @@ const WorkoutDetails = ({workout}: WorkoutDetailsProps) => {
             )}
 
             {/* Triceps */}
-            {workout?.triceps.length && (
+            {Boolean(workout?.triceps.length) && (
                 <div 
                     className={classnames(
                         classes.container, 
@@ -130,7 +140,7 @@ const WorkoutDetails = ({workout}: WorkoutDetailsProps) => {
             )}
 
             {/* Biceps */}
-            {workout?.biceps.length && (
+            {Boolean(workout?.biceps.length) && (
                 <div 
                     className={classnames(
                         classes.container, 
@@ -158,7 +168,7 @@ const WorkoutDetails = ({workout}: WorkoutDetailsProps) => {
             )}
 
             {/* Legs */}
-            {workout?.legs.length && (
+            {Boolean(workout?.legs.length) && (
                 <div 
                     className={classnames(
                         classes.container, 
@@ -186,7 +196,7 @@ const WorkoutDetails = ({workout}: WorkoutDetailsProps) => {
             )}
 
             {/* Calfes */}
-            {workout?.calfes.length && (
+            {Boolean(workout?.calfes.length) && (
                 <div 
                     className={classnames(
                         classes.container, 
@@ -214,7 +224,7 @@ const WorkoutDetails = ({workout}: WorkoutDetailsProps) => {
             )}
 
             {/* Abs */}
-            {workout?.abs.length && (
+            {Boolean(workout?.abs.length) && (
                 <div 
                     className={classnames(
                         classes.container, 

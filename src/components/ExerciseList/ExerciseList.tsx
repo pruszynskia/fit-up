@@ -4,6 +4,8 @@ import {useDispatch} from 'react-redux'
 import WorkoutForm from '../WorkoutForm/WorkoutForm';
 
 import useStyles from '../../styles/common';
+import classnames from 'classnames';
+
 import { 
     Button,
     Dialog,
@@ -16,13 +18,13 @@ import {
 
 const ExerciseList = () => {
     
-    const styles = useStyles();
+    const classes = useStyles();
     const dispatch = useDispatch()
     
     //Dialog
     const [open, setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
+    const handleOpen = () => {
       setOpen(true);
     };
   
@@ -30,24 +32,10 @@ const ExerciseList = () => {
         setOpen(false);
     };
 
-    const handleSubmit = (e: any, formData: any) => {
-        e.preventDefault();
-        console.log("formData submited", formData);
-
-        dispatch({
-            type: 'ADD_WORKOUT',
-            payload: formData
-        });
-    };
-    const handleForm = (e: any, formData: any) => {
-        setOpen(false);
-        handleSubmit(e, formData);
-    } 
-
     return (
         <div>
             <div>
-                <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+                <Button variant="outlined" color="primary" onClick={handleOpen}>
                     New Workout Template
                 </Button>
                 <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -56,11 +44,7 @@ const ExerciseList = () => {
                     <DialogContentText>
                         Choose exercise from the list:
                     </DialogContentText>
-                        
-                        <WorkoutForm handleForm={handleForm}
-
-                    />
-                        
+                        <WorkoutForm handleClose={handleClose} />
                     </DialogContent>
                     <DialogActions>
                         

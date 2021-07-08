@@ -1,70 +1,198 @@
-
+[
     {
-        "chest": [
-            "barbell bench press", 
-            "cable crossover", 
-            "chest press", 
-            "dips", 
-            "incline dumbbell flies", 
-            "pushups"
-        ],
-        "back": [
-            "barbell row",
-            "barbell deadlift", 
-            "lat pulldown",
-            "quadruped dumbbell row",
-            "resistance band pull apart",
-            "single-arm dumbbell row", 
-            "wide dumbbell row"
-        ],
-        "arms": [
-            "overhead press",
-            "chin-up",
-            "EZ-bar upright row",
-            "incline dumbbell biceps curl",
-            "dumbbell lateral raise",
-            "cable triceps press-down"
-        ],
-        "triceps": [
-            "close-grip bench pres",
-            "cable rope tricep pushdown",
-            "lying triceps extension",
-            "tricep dips",
-            "diamond push-ups",
-            "bench dip",
-            "one-arm overhead extension",
-            "standard push-up"
-        ],
-        "biceps": [
-            "barbell curl",
-            "chin-up",
-            "EZ-bar preacher curl",
-            "hammer Curl",
-            "incline dumbbell curl",
-            "reverse-grip eent-over row",
-            "cable curl",
-            "concentration curl"
-        ],
-        "legs": [
-            "back squats",
-            "front squats",
-            "hack squats",
-            "leg press",
-            "stiff leg deadlifts",
-            "goodmornings",
-            "machine hamstring curls",
-            "machine leg extensions"
-        ],
-        "calfes": [
-            "sited calfes extensions",
-            "standing calfes extensions"
-        ],
-        "abs": [
-            "bicycle crunches",
-            "crunches",
-            "hanging leg raises",
-            "plank"
-        ]
+        "name": "barbell bench press",
+        "bodyPart": "chest"
+    },
+    {
+        "name": "cable crossover",
+        "bodyPart": "chest"
+    },
+    {
+        "name": "chest press",
+        "bodyPart": "chest"
+    },
+    {
+        "name": "dips",
+        "bodyPart": "chest"
+    },
+    {
+        "name": "incline dumbbell flies",
+        "bodyPart": "chest"
+    },
+    {
+        "name": "pushups",
+        "bodyPart": "chest"
+    },
+    {
+        "name": "barbell row",
+        "bodyPart": "back"
+    },
+    {
+        "name": "barbell deadlift",
+        "bodyPart": "back"
+    },
+    {
+        "name": "lat pulldown",
+        "bodyPart": "back"
+    },
+    {
+        "name": "quadruped dumbbell row",
+        "bodyPart": "back"
+    },
+    {
+        "name": "resistance band pull apart",
+        "bodyPart": "back"
+    },
+    {
+        "name": "single-arm dumbbell row",
+        "bodyPart": "back"
+    },
+    {
+        "name": "wide dumbbell row",
+        "bodyPart": "back"
+    },
+    {
+        "name": "overhead press",
+        "bodyPart": "arm"
+    },
+    {
+        "name": "chin-up",
+        "bodyPart": "arm"
+    },
+    {
+        "name": "EZ-bar upright row",
+        "bodyPart": "arm"
+    },
+    {
+        "name": "incline dumbbell biceps curl",
+        "bodyPart": "arm"
+    },
+    {
+        "name": "dumbbell laterall raise",
+        "bodyPart": "arm"
+    },
+    {
+        "name": "cable triceps press-down",
+        "bodyPart": "arm"
+    },
+    {
+        "name": "close-grip bench press",
+        "bodyPart": "triceps"
+    },
+    {
+        "name": "cable rope triceps pushdown",
+        "bodyPart": "triceps"
+    },
+    {
+        "name": "lying triceps extensions",
+        "bodyPart": "triceps"
+    },
+    {
+        "name": "tricep dips",
+        "bodyPart": "triceps"
+    },
+    {
+        "name": "diamond push-ups",
+        "bodyPart": "triceps"
+    },
+    {
+        "name": "bench dip",
+        "bodyPart": "triceps"
+    },
+    {
+        "name": "one-arm overhead extension",
+        "bodyPart": "triceps"
+    },
+    {
+        "name": "standard push-up",
+        "bodyPart": "triceps"
+    },
+    {
+        "name": "barbell curl",
+        "bodyPart": "biceps"
+    },
+    {
+        "name": "chin-up",
+        "bodyPart": "biceps"
+    },
+    {
+        "name": "EZ-bar preacher curl",
+        "bodyPart": "biceps"
+    },
+    {
+        "name": "hammer Curl",
+        "bodyPart": "biceps"
+    },
+    {
+        "name": "incline dumbbell curl",
+        "bodyPart": "biceps"
+    },
+    {
+        "name": "reverse-grip eent-over row",
+        "bodyPart": "biceps"
+    },
+    {
+        "name": "cable curl",
+        "bodyPart": "biceps"
+    },
+    {
+        "name": "concentration curl",
+        "bodyPart": "biceps"
+    },
+    {
+        "name": "back squats",
+        "bodyPart": "legs"
+    },
+    {
+        "name": "front squats",
+        "bodyPart": "legs"
+    },
+    {
+        "name": "hack squats",
+        "bodyPart": "legs"
+    },
+    {
+        "name": "leg press",
+        "bodyPart": "legs"
+    },
+    {
+        "name": "stiff leg deadlifts",
+        "bodyPart": "legs"
+    },
+    {
+        "name": "goodmornings",
+        "bodyPart": "legs"
+    },
+    {
+        "name": "machine hamstring curls",
+        "bodyPart": "legs"
+    },
+    {
+        "name": "machine leg extensions",
+        "bodyPart": "legs"
+    },
+    {
+        "name": "sited calfes extensions",
+        "bodyPart": "calfes"
+    },
+    {
+        "name": "standing calfes extensions",
+        "bodyPart": "calfes"
+    },
+    {
+        "name": "bicycle crunches",
+        "bodyPart": "abs"
+    },
+    {
+        "name": "crunches",
+        "bodyPart": "abs"
+    },
+    {
+        "name": "hanging leg raises",
+        "bodyPart": "abs"
+    },
+    {
+        "name": "plank",
+        "bodyPart": "abs"
     }
-
-  
+]
