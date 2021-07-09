@@ -12,7 +12,7 @@ const CurrentWorkout = () => {
     const router = useRouter();
 
     const data = useSelector((state: any) => state.workout)
-    
+    console.log(data)
     return (
     <div className={classnames(classes.root, classes.column)}>
         {

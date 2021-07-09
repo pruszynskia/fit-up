@@ -64,6 +64,7 @@ const WorkoutForm = ({handleClose}: WorkoutFormProps) => {
                 {/* Bodypart iteration */}
                 {bodyParts.map((b: any, id:any) => {
                     return (
+                        
                     <div key={id} 
                         className={classnames(
                             classes.container,
