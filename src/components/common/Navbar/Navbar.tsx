@@ -7,6 +7,7 @@ import {
 } from '@material-ui/core';
 import CurrentWorkout from '../../CurrentWorkout/CurrentWorkouts';
 import ExerciseList from '../../ExerciseList/ExerciseList';
+import Calendar from '../../Calendar';
 
 function Navbar() {
   const classes = useStyles();
@@ -35,6 +36,7 @@ function Navbar() {
         </AppBar>
         { selectedTab === 0 && <CurrentWorkout />}
         { selectedTab === 1 && <ExerciseList />}
+        { selectedTab === 2 && <Calendar />}
       </div>
     )
   }

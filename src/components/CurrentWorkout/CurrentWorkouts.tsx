@@ -1,12 +1,11 @@
+import React from "react";
 import classnames from "classnames";
 import useStyles from './CurrentWorkouts.styles';
 import {useRouter} from 'next/router'
 import {useSelector} from 'react-redux'
 
-
 import DialogButton from "../common/DialogButton/DialogButton";
 import WorkoutDetails from '../WorkoutDetails'
-import TestComponent2 from '../common/test'
 
 const CurrentWorkout = () => {
     const classes = useStyles();
@@ -22,8 +21,6 @@ const CurrentWorkout = () => {
                 </DialogButton>
             ))
         }
-
-        <TestComponent2 />
     </div>
     )
   }
