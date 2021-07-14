@@ -16,16 +16,17 @@ import {
 
 interface WorkoutFormProps {
     handleClose: Function;
+    data?: any;
 }
 
-const WorkoutForm = ({handleClose}: WorkoutFormProps) => {
+const WorkoutForm = ({handleClose, data}: WorkoutFormProps) => {
     const classes = useStyles();
 
     const bodyParts = ["chest", "back", "arm", "triceps", "biceps", "legs", "calfes", "abs"];
     const exercises: Array<{name: string; bodyPart: string}> = workoutList;
 
     // const data
-    let [formData, setFormData] = useState<any>(initialState);
+    let [formData, setFormData] = useState<any>(data ? data : initialState);
 
     const dispatch = useDispatch();
     const dataSelect = useSelector((state: any) => state);
@@ -45,21 +46,21 @@ const WorkoutForm = ({handleClose}: WorkoutFormProps) => {
             type: 'ADD_WORKOUT',
             payload: formData
         });
+        handleClose();
     };
-    const handleForm = async (e: any) => {
-        handleSubmit(e);
-        handleClose()
-    }
+
+    console.log("formData", formData)
+    console.log("exercises", exercises)
 
     return (
         <div className={classes.root}>
-            <form onSubmit={(e: any) => handleForm(e)}>
+            <form onSubmit={(e: any) => handleSubmit(e)}>
                 <TextField
                     label="Title"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    />
+                />
 
                 {/* Bodypart iteration */}
                 {bodyParts.map((b: any, id:any) => {
@@ -76,7 +77,9 @@ const WorkoutForm = ({handleClose}: WorkoutFormProps) => {
                         <span className={classnames(classes.title, classes.bold )}>{b}</span>
                         {exercises.filter((ex: any) => ex.bodyPart === b).map((ex: any, idx:any) => (
                             <div key={idx}>
+                                {
                                 <Checkbox
+                                    defaultChecked={formData[ex.bodyPart]?.includes(ex.name) ? true : false} 
                                     name={ex.name}
                                     onChange={(e: any) => {
                                         if(e.target.checked) setFormData({
@@ -93,6 +96,7 @@ const WorkoutForm = ({handleClose}: WorkoutFormProps) => {
                                         }
                                     }}
                                 />
+                }
                                 <span>{ex.name}</span>
                             </div>
                         ))}
@@ -101,9 +105,9 @@ const WorkoutForm = ({handleClose}: WorkoutFormProps) => {
                 })}
 
                 <Button type="submit" color="primary">
-                            Create
-                        </Button>
-                </form>
+                    Create
+                </Button>
+            </form>
         </div>
     )
 }

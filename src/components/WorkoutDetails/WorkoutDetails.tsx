@@ -18,19 +18,22 @@ const WorkoutDetails = ({workout}: WorkoutDetailsProps) => {
     const classes = useStyles();
 
     const bodyParts = ["chest", "back", "arm", "triceps", "biceps", "legs", "calfes", "abs"];
-    const exercises: Array<{name: string; bodyPart: string}> = workoutList;
 
-    console.log("WORKOUT", workout)
     return (
         <div className={classnames(classes.root)}>
-            <span className={classnames(classes.title, classes.bold)}>
+            <span className={classnames(
+                classes.container,
+                classes.row,
+                classes.title, 
+                classes.bold
+                )}
+            >
                 <span>{workout?.name}</span>
-                <span><OptionsMenu /></span>
+                <span><OptionsMenu workout={workout}/></span>
             </span>
             
             {/* Bodypart iteration */}
             {bodyParts.map((b: any, id:any) => {
-
                 return (
                 Boolean(workout[b]?.length) && (
                     <div key={id}

@@ -15,7 +15,6 @@ import {
     DialogTitle,
 } from '@material-ui/core';
 
-
 const ExerciseList = () => {
     
     const classes = useStyles();

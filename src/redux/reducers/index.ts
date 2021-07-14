@@ -12,8 +12,8 @@ import data from '../../../src/temp/workoutList.json'
 const initialState = {
     workout: [],
     visibilityFilters: {
-        addJobOfferFilter: false,
-        editJobOfferFilter: false
+        addWorkoutFilter: false,
+        editWorkoutFilter: false
     }
 }
 

@@ -6,13 +6,13 @@ import {useSelector} from 'react-redux'
 
 import DialogButton from "../common/DialogButton/DialogButton";
 import WorkoutDetails from '../WorkoutDetails'
+import TestComponent2 from '../common/test'
 
 const CurrentWorkout = () => {
     const classes = useStyles();
     const router = useRouter();
 
     const data = useSelector((state: any) => state.workout)
-    console.log(data)
     return (
     <div className={classnames(classes.root, classes.column)}>
         {
@@ -23,6 +23,7 @@ const CurrentWorkout = () => {
             ))
         }
 
+        <TestComponent2 />
     </div>
     )
   }
