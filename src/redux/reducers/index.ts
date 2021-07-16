@@ -10,6 +10,7 @@ import {
 import {v4} from 'uuid';
 
 import data from '../../../src/temp/workoutList.json'
+import WorkoutDetailsStyles from '../../components/WorkoutDetails/WorkoutDetails.styles';
 
 interface StateType {
     workout: Array<any>;
@@ -51,27 +52,35 @@ export default function rootReducer(state: StateType = initialState, action: any
                         } else {
                             return edit;
                         }
-                    }),
+                    })
             };
         }
         case ADD_WORKOUT_DAY:{
             return {
-
+                ...state,
+                workoutDays: [...state.workoutDays, {id:v4(), ...action.payload}]
             };
         }
-
         case DELETE_WORKOUT_DAY:{
             return {
-
+                ...state,
+                workoutDays: 
+                    state.workoutDays.filter((data: any) => data.id !== action.payload)
             };
         }
-
         case EDIT_WORKOUT_DAY:{
             return {
-
+                ...state,
+                workoutDays:
+                    state.workoutDays.map((edit: any) => {
+                        if (edit === action.payload.data.id) {
+                            return action.payload.data;
+                        } else {
+                            return edit;
+                        }
+                    })
             };
         }
-        
         default:
             return state;
     }
