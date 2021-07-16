@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import useStyles from './WorkoutForm.styles';
 import classnames from 'classnames';
@@ -21,23 +21,23 @@ interface WorkoutFormProps {
 
 const WorkoutForm = ({handleClose, data}: WorkoutFormProps) => {
     const classes = useStyles();
+    const dispatch = useDispatch();
 
-    const bodyParts = ["chest", "back", "arm", "triceps", "biceps", "legs", "calfes", "abs"];
+    const bodyParts = ["chest", "back", "arms", "triceps", "biceps", "legs", "calfes", "abs"];
     const exercises: Array<{name: string; bodyPart: string}> = workoutList;
 
     // const data
     let [formData, setFormData] = useState<any>(data ? data : initialState);
 
-    const dispatch = useDispatch();
-    const dataSelect = useSelector((state: any) => state);
 
     const handleChange = (event: React.ChangeEvent<{value: unknown; name: string}>) => {
         setFormData({
             ...formData,
             [event.target.name]: event.target.value as string
-
         })
     }
+
+    
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
@@ -50,7 +50,7 @@ const WorkoutForm = ({handleClose, data}: WorkoutFormProps) => {
     };
 
     console.log("formData", formData)
-    console.log("exercises", exercises)
+    // console.log("exercises", exercises)
 
     return (
         <div className={classes.root}>
@@ -79,20 +79,24 @@ const WorkoutForm = ({handleClose, data}: WorkoutFormProps) => {
                             <div key={idx}>
                                 {
                                 <Checkbox
-                                    defaultChecked={formData[ex.bodyPart]?.includes(ex.name) ? true : false} 
+                                    checked={formData[b].map((el: any) => el.name).includes(ex.name)}
                                     name={ex.name}
-                                    onChange={(e: any) => {
-                                        if(e.target.checked) setFormData({
+                                    onChange={(e: any) =>{
+                                        if(e.target.checked) {
+                                            setFormData({
                                             ...formData,
                                             [b]: [...formData[b], {
                                                 name: ex.name
                                             }]
                                         })
+                                  
+                                    }
                                         else {
                                             setFormData({
                                                 ...formData,
-                                                [b]: formData[b].filter((ex: any) => ex.name !== exercises)
+                                                [b]: formData[b].filter((ex_: any) => ex_.name !== ex.name)
                                             })
+                               
                                         }
                                     }}
                                 />

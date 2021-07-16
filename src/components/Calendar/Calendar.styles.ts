@@ -4,15 +4,17 @@ export default makeStyles(theme => ({
     root: {
         display: "flex",
         flexDirection: "column",
+
     },
     container: {
         display: "flex",
-        flexWrap: "wrap",
+        justifyContent: "center",
+        alignItems: "baseline",
         marginTop: "20px"
     },
     column: {
         flexDirection: "column",
-        // justifyContent: "center",
+        justifyContent: "center",
     },
     row: {
         flexDirection: "row",
@@ -20,5 +22,10 @@ export default makeStyles(theme => ({
     },
     offset: {
         marginLeft: "20px"
+    },
+    gRoot: {
+        display: "grid",
+        gridTemplateColumns: "repeat(7, 1fr)",
+        gridTemplateRows: "repeat(6, 50px)"
     }
 }))

@@ -1,4 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as Moment from 'moment'
+import {extendMoment} from 'moment-range'
+
+const moment = extendMoment(Moment)
+
 import classnames from "classnames";
 import useStyles from './Calendar.styles';
 
@@ -14,14 +20,21 @@ import {
     Select,
     MenuItem,
     FormControl,
-    TextField
+    TextField,
+    Button
 } from '@material-ui/core';
 
 
 const Calendar = () => {
     const classes = useStyles();
-    const [selectedDate, handleDateChange] = useState(new Date());
+    const dispatch = useDispatch();
+
+    const [selectedDate, handleDateChange] = useState<any>(new Date());
+
     const [open, setOpen] = React.useState(false);
+    const workouts = useSelector((state: any) => state.workout)
+
+    let [calendarFormData, setCalendarFormData] = useState<any>();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -30,6 +43,25 @@ const Calendar = () => {
     const handleClose = () => {
     setOpen(false);
     };
+
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+
+        dispatch({
+            type: 'ADD_WORKOUT',
+            payload: calendarFormData
+        });
+        handleClose();
+    };
+
+    var days: number[] = []
+
+    
+        if(days.length == 0)
+            for(let i=1; i<= 31; i++) days.push(i)
+    
+
+    console.log("days", days)
 
     return (
         <div className={classes.root}>
@@ -56,42 +88,68 @@ const Calendar = () => {
                      onClose={handleClose} 
                 >
                     <DialogContent>
-                        <Card className={classnames(
-                            classes.container,
-                            classes.column
-                            )}
-                        >
-                            <MuiPickersUtilsProvider utils={MomentUtils}>
-                                <DatePicker
-                                    label="Date"
-                                    value={selectedDate}
-                                    onChange={handleDateChange}
-                                    animateYearScrolling
-                                    />
-                            </MuiPickersUtilsProvider>
-                            <FormControl>
-                                <InputLabel>Workout</InputLabel>
-                                <Select
-                                
-                                >
-                                    <MenuItem>WorkoutNameIterable</MenuItem>    
-                                </Select>
-
-                            </FormControl>
-                            <span>BodyPartIterable</span>
+                        {/* <form onSubmit={(e: any) => handleSubmit(e)}>
                             <div className={classnames(
                                 classes.container,
-                                classes.row
-                            )}
+                                classes.column
+                                )}
                             >
-                            <span>ExerciseInBodyPartIterable</span>
-                            <TextField label="weight" />
-                            <TextField label="reps" />
-                            <TextField label="sets" />
+                                <MuiPickersUtilsProvider utils={MomentUtils}>
+                                    <DatePicker
+                                        label="Date"
+                                        value={selectedDate}
+                                        onChange={handleDateChange}
+                                        animateYearScrolling
+                                    />
+                                </MuiPickersUtilsProvider>
+                                <FormControl>
+                                    <InputLabel>Workout</InputLabel>
+                                    <Select
+                                    
+                                    >
+                                        <MenuItem>WorkoutNameIterable</MenuItem>    
+                                    </Select>
+                                </FormControl>
+                                <span>BodyPartIterable</span>
+                                <div className={classnames(
+                                    classes.container,
+                                    classes.row,
+                                    )}
+                                >
+                                    <span>ExerciseInBodyPartIterable</span>
+                                    <TextField className={classes.offset} label="weight" />
+                                    <TextField className={classes.offset} label="reps" />
+                                    <TextField className={classes.offset} label="sets" />
+                                </div>
                             </div>
-                        </Card>
+                            <Button type="submit">
+                                Add
+                            </Button>
+                        </form> */}
+                        {/* <div>
+                            <div>
+                                <span><strong>name: </strong>{workouts[0].name}</span><br />
+                                <span><strong>date: </strong>16-07-2021</span>
+                            </div>
+                            <div>
+                                <span>{workouts[0].chest[0].name}</span><br />
+                                <span>Add sets</span><br />
+                                <span>Add reps</span><br />
+                            </div>
+                            <div>
+                                <span>{workouts[0].chest[1].name}</span><br />
+                                <span>Add sets</span><br />
+                                <span>Add reps</span><br />
+                            </div>
+                            
+                        </div> */}
                     </DialogContent>
                 </Dialog>
+            </div>
+            <div className={classes.gRoot} >
+                        {days.map((d: any) => (
+                            <div key={d} style={{background: "red"}}>{d}</div>
+                        ))}
             </div>
         </div>
     )

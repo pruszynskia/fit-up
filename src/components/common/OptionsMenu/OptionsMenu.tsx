@@ -12,12 +12,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 
 import WorkoutForm from '../../WorkoutForm/WorkoutForm';
 
-interface RootState {
-    workout: any,
-    visibilityFilters: {
-        editWorkoutFilter: boolean
-    }
-}
 
 export default function OptionsMenu ({workout}:any) {
     const classes = useStyles();
@@ -51,12 +45,7 @@ export default function OptionsMenu ({workout}:any) {
 
     const handleEditOpen = (data: any) => {
         setOpenEditWorkout(true);
-        dispatch({
-            type: 'SET_VISIBILITY_FILTER',
-            payload: {
-                editJobOfferFilter: true
-            }
-        })
+
     };
 
     const handleEditClose = () => {

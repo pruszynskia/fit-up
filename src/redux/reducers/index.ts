@@ -1,23 +1,32 @@
 import {
     ADD_WORKOUT,
+    ADD_WORKOUT_DAY,
     DELETE_WORKOUT,
+    DELETE_WORKOUT_DAY,
     EDIT_WORKOUT,
-    SET_VISIBILITY_FILTER
+    EDIT_WORKOUT_DAY
 } from '../actionTypes';
 
 import {v4} from 'uuid';
 
 import data from '../../../src/temp/workoutList.json'
 
-const initialState = {
-    workout: [],
-    visibilityFilters: {
-        addWorkoutFilter: false,
-        editWorkoutFilter: false
-    }
+interface StateType {
+    workout: Array<any>;
+    workoutDays: Array<{
+        id: string;
+        name: string;
+        date: string;
+        exercises: Array<any>
+    }>
 }
 
-export default function rootReducer(state:any = initialState, action: any) {
+const initialState: StateType = {
+    workout: [],
+    workoutDays: [],
+}
+
+export default function rootReducer(state: StateType = initialState, action: any) {
     switch(action.type) {
         case ADD_WORKOUT: {
             return {
@@ -45,16 +54,22 @@ export default function rootReducer(state:any = initialState, action: any) {
                     }),
             };
         }
-
-        // VISIBILITY_FILTER
-        case SET_VISIBILITY_FILTER: {
+        case ADD_WORKOUT_DAY:{
             return {
-                ...state,
-                visibilityFilters: {
-                    ...state.visibilityFilters,
-                    ...action.payload
-                }
-            }
+
+            };
+        }
+
+        case DELETE_WORKOUT_DAY:{
+            return {
+
+            };
+        }
+
+        case EDIT_WORKOUT_DAY:{
+            return {
+
+            };
         }
         
         default:
