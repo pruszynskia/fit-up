@@ -91,7 +91,7 @@ const Calendar = () => {
                      onClose={handleClose} 
                 >
                     <DialogContent>
-                        {/* <form onSubmit={(e: any) => handleSubmit(e)}>
+                        <form onSubmit={(e: any) => handleSubmit(e)}>
                             <div className={classnames(
                                 classes.container,
                                 classes.column
@@ -110,10 +110,10 @@ const Calendar = () => {
                                     <Select
                                     
                                     >
-                                        <MenuItem>WorkoutNameIterable</MenuItem>    
+                                        <MenuItem>{workouts[0].name}</MenuItem>    
                                     </Select>
                                 </FormControl>
-                                <span>BodyPartIterable</span>
+                                <span>{workouts[0].chest[0].name}</span>
                                 <div className={classnames(
                                     classes.container,
                                     classes.row,
@@ -128,7 +128,7 @@ const Calendar = () => {
                             <Button type="submit">
                                 Add
                             </Button>
-                        </form> */}
+                        </form>
 
                         {/* <div>
                             <div>
