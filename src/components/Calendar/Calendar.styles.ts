@@ -10,7 +10,7 @@ export default makeStyles(theme => ({
         display: "flex",
         justifyContent: "center",
         alignItems: "baseline",
-        marginTop: "20px"
+        padding: "20px",
     },
     column: {
         flexDirection: "column",
@@ -26,6 +26,8 @@ export default makeStyles(theme => ({
     gRoot: {
         display: "grid",
         gridTemplateColumns: "repeat(7, 1fr)",
-        gridTemplateRows: "repeat(6, 50px)"
+        gridTemplateRows: "repeat(6, 50px)",
+        padding:"20px",
+
     }
 }))

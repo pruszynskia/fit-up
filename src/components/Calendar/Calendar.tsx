@@ -54,12 +54,15 @@ const Calendar = () => {
         handleClose();
     };
 
+    // Calendar
     var days: number[] = []
-
     
         if(days.length == 0)
             for(let i=1; i<= 31; i++) days.push(i)
     
+    var monthStart = moment().startOf("month")
+    var monthEnd = moment().endOf("month")
+    var monthDays = moment.range(monthStart, monthEnd)
 
     console.log("days", days)
 
@@ -126,6 +129,7 @@ const Calendar = () => {
                                 Add
                             </Button>
                         </form> */}
+
                         {/* <div>
                             <div>
                                 <span><strong>name: </strong>{workouts[0].name}</span><br />
@@ -146,11 +150,20 @@ const Calendar = () => {
                     </DialogContent>
                 </Dialog>
             </div>
+
+            {/* Calendar */}
+            <Card>
             <div className={classes.gRoot} >
-                        {days.map((d: any) => (
-                            <div key={d} style={{background: "red"}}>{d}</div>
-                        ))}
+                {days.map((d: any) => (
+                    <div key={d} className={classnames(
+                        classes.container,
+                    )}
+                    >
+                        <Button>{d}</Button>
+                    </div>
+                ))}
             </div>
+            </Card>
         </div>
     )
 }
