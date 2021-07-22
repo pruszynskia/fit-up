@@ -24,6 +24,7 @@ import {
     Button
 } from '@material-ui/core';
 
+import DatePickerC from "../common/DatePickerC";
 
 const Calendar = () => {
     const classes = useStyles();
@@ -58,13 +59,16 @@ const Calendar = () => {
     var days: number[] = []
     
         if(days.length == 0)
-            for(let i=1; i<= 31; i++) days.push(i)
+            for(let i=1; i <= 31; i++) days.push(i)
     
+    // Utils
     var monthStart = moment().startOf("month")
     var monthEnd = moment().endOf("month")
     var monthDays = moment.range(monthStart, monthEnd)
 
+
     console.log("days", days)
+    // console.log("workouts", workouts[0].chest[1].name)
 
     return (
         <div className={classes.root}>
@@ -110,10 +114,10 @@ const Calendar = () => {
                                     <Select
                                     
                                     >
-                                        <MenuItem>{workouts[0].name}</MenuItem>    
+                                        <MenuItem></MenuItem>    
                                     </Select>
                                 </FormControl>
-                                <span>{workouts[0].chest[0].name}</span>
+                                {/* <span>{workouts[0].chest[0].name}</span> */}
                                 <div className={classnames(
                                     classes.container,
                                     classes.row,
@@ -164,6 +168,7 @@ const Calendar = () => {
                 ))}
             </div>
             </Card>
+
         </div>
     )
 }
