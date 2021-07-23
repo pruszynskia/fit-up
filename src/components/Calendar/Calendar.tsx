@@ -24,7 +24,8 @@ import {
     Button
 } from '@material-ui/core';
 
-import DatePickerC from "../common/DatePickerC";
+import DisplayCalendar from "./DisplayCalendar";
+import WorkoutTrackerForm from "../WorkoutTrackerForm";
 
 const Calendar = () => {
     const classes = useStyles();
@@ -67,8 +68,7 @@ const Calendar = () => {
     var monthDays = moment.range(monthStart, monthEnd)
 
 
-    console.log("days", days)
-    // console.log("workouts", workouts[0].chest[1].name)
+    console.log("Workouts", workouts[0])
 
     return (
         <div className={classes.root}>
@@ -77,7 +77,7 @@ const Calendar = () => {
                 classes.column,
                 classes.offset
             )}>
-                <span>Display Calendar</span>
+                <DisplayCalendar formOpen={handleClickOpen}/>
                 <IconButton
                     aria-controls="simple-menu" 
                     aria-haspopup="true" 
@@ -128,46 +128,34 @@ const Calendar = () => {
                                     <TextField className={classes.offset} label="reps" />
                                     <TextField className={classes.offset} label="sets" />
                                 </div>
+                                {/* <div>
+                                    <div>
+                                        <span><strong>name: </strong>{workouts[0].name}</span><br />
+                                        <span><strong>date: </strong>16-07-2021</span>
+                                    </div>
+                                    <div>
+                                        <span>{workouts[0].chest[0].name}</span><br />
+                                        <span>Add sets</span><br />
+                                        <span>Add reps</span><br />
+                                    </div>
+                                    <div>
+                                        <span>{workouts[0].chest[1].name}</span><br />
+                                        <span>Add sets</span><br />
+                                        <span>Add reps</span><br />
+                                    </div>
+                                    
+                                </div> */}
                             </div>
                             <Button type="submit">
                                 Add
                             </Button>
                         </form>
 
-                        {/* <div>
-                            <div>
-                                <span><strong>name: </strong>{workouts[0].name}</span><br />
-                                <span><strong>date: </strong>16-07-2021</span>
-                            </div>
-                            <div>
-                                <span>{workouts[0].chest[0].name}</span><br />
-                                <span>Add sets</span><br />
-                                <span>Add reps</span><br />
-                            </div>
-                            <div>
-                                <span>{workouts[0].chest[1].name}</span><br />
-                                <span>Add sets</span><br />
-                                <span>Add reps</span><br />
-                            </div>
-                            
-                        </div> */}
                     </DialogContent>
                 </Dialog>
             </div>
 
-            {/* Calendar */}
-            <Card>
-            <div className={classes.gRoot} >
-                {days.map((d: any) => (
-                    <div key={d} className={classnames(
-                        classes.container,
-                    )}
-                    >
-                        <Button>{d}</Button>
-                    </div>
-                ))}
-            </div>
-            </Card>
+            
 
         </div>
     )

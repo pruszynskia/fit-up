@@ -6,7 +6,7 @@ import { extendMoment } from "moment-range";
 const moment = extendMoment(Moment);
 
 import classnames from "classnames";
-import useclasses from './DatePickerC.styles'
+import useStyles from './DatePickerC.styles'
 
 export default function DatePickers(props: {
   selectedDay: moment.Moment;
@@ -14,7 +14,7 @@ export default function DatePickers(props: {
   className?: string;
   onSelect?: Function;
 }) {
-  const classes = useclasses();
+  const classes = useStyles();
 
   const { selectedDay, setSelectedDay, className, onSelect, ...other } = props;
   const [expandedMonths, setExpandedMonths] = useState(false);
