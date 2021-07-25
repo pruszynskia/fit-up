@@ -67,9 +67,6 @@ const Calendar = () => {
     var monthEnd = moment().endOf("month")
     var monthDays = moment.range(monthStart, monthEnd)
 
-
-    console.log("Workouts", workouts[0])
-
     return (
         <div className={classes.root}>
             <div className={classnames(
@@ -128,7 +125,7 @@ const Calendar = () => {
                                     <TextField className={classes.offset} label="reps" />
                                     <TextField className={classes.offset} label="sets" />
                                 </div>
-                                {/* <div>
+                                 {Boolean(workouts.length) && <div>
                                     <div>
                                         <span><strong>name: </strong>{workouts[0].name}</span><br />
                                         <span><strong>date: </strong>16-07-2021</span>
@@ -144,7 +141,7 @@ const Calendar = () => {
                                         <span>Add reps</span><br />
                                     </div>
                                     
-                                </div> */}
+                                </div>}
                             </div>
                             <Button type="submit">
                                 Add

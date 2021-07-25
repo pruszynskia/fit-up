@@ -6,6 +6,7 @@ import {useSelector} from 'react-redux'
 
 import DialogButton from "../common/DialogButton/DialogButton";
 import WorkoutDetails from '../WorkoutDetails'
+import WorkoutTrackerForm from "../WorkoutTrackerForm";
 
 const CurrentWorkout = () => {
     const classes = useStyles();
@@ -21,6 +22,7 @@ const CurrentWorkout = () => {
                 </DialogButton>
             ))
         }
+        <WorkoutTrackerForm />
     </div>
     )
   }

@@ -12,6 +12,7 @@ import {v4} from 'uuid';
 import data from '../../../src/temp/workoutList.json'
 import WorkoutDetailsStyles from '../../components/WorkoutDetails/WorkoutDetails.styles';
 
+
 interface StateType {
     workout: Array<any>;
     workoutDays: Array<{

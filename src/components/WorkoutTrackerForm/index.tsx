@@ -1,1 +1,1 @@
-export { default } from './WorkoutTrackerForm';
+export { default } from '../../../pages/WorkoutTrackerForm';
