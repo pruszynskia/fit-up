@@ -52,9 +52,6 @@ export default function OptionsMenu ({workout}:any) {
         setOpenEditWorkout(false);
         forceUpdate();
     };
-
-
-    console.log("w", workout)
     
     return (
         <div className={classes.root}>

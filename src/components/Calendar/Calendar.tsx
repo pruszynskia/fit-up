@@ -25,7 +25,6 @@ import {
 } from '@material-ui/core';
 
 import DisplayCalendar from "./DisplayCalendar";
-import WorkoutTrackerForm from "../WorkoutTrackerForm";
 
 const Calendar = () => {
     const classes = useStyles();
@@ -50,7 +49,7 @@ const Calendar = () => {
         e.preventDefault();
 
         dispatch({
-            type: 'ADD_WORKOUT',
+            type: 'ADD_WORKOUT_DAY',
             payload: calendarFormData
         });
         handleClose();
@@ -67,6 +66,17 @@ const Calendar = () => {
     var monthEnd = moment().endOf("month")
     var monthDays = moment.range(monthStart, monthEnd)
 
+    // Select
+    const [wName, setWName] = React.useState('');
+
+    const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+        setWName(event.target.value as string);
+        
+    };
+
+
+    console.log("workouts", workouts)
+    
     return (
         <div className={classes.root}>
             <div className={classnames(
@@ -109,39 +119,51 @@ const Calendar = () => {
                                 <FormControl>
                                     <InputLabel>Workout</InputLabel>
                                     <Select
-                                    
+                                        id='id'
+                                        value={wName}
+                                        onChange={handleChange}    
                                     >
-                                        <MenuItem></MenuItem>    
+                                        {workouts.map((pos: any, id: any) => <MenuItem key={id}>{pos.name}</MenuItem>)}    
                                     </Select>
                                 </FormControl>
-                                {/* <span>{workouts[0].chest[0].name}</span> */}
                                 <div className={classnames(
                                     classes.container,
-                                    classes.row,
+                                    classes.column,
                                     )}
                                 >
-                                    <span>ExerciseInBodyPartIterable</span>
-                                    <TextField className={classes.offset} label="weight" />
-                                    <TextField className={classes.offset} label="reps" />
-                                    <TextField className={classes.offset} label="sets" />
-                                </div>
-                                 {Boolean(workouts.length) && <div>
-                                    <div>
-                                        <span><strong>name: </strong>{workouts[0].name}</span><br />
-                                        <span><strong>date: </strong>16-07-2021</span>
-                                    </div>
-                                    <div>
-                                        <span>{workouts[0].chest[0].name}</span><br />
-                                        <span>Add sets</span><br />
-                                        <span>Add reps</span><br />
-                                    </div>
-                                    <div>
-                                        <span>{workouts[0].chest[1].name}</span><br />
-                                        <span>Add sets</span><br />
-                                        <span>Add reps</span><br />
-                                    </div>
+                                    {Boolean(workouts?.length) && workouts.map((b: any, id:any) => {
+                                        console.log("b", b)
+                                        return (
+                                         (
+                                            <div key={id}
+                                                className={classnames(
+                                                    classes.container, 
+                                                    classes.column,
+                                                    classes.offset
+                                                )}
+                                            ><span>{b.name}</span>
+                                                {b.exercises.map((c:any, idx:any) => {
+                                                    return (
+                                                        <div key={b.name+"-exercise-"+idx}
+                                                            className={classnames(
+                                                                classes.row,
+                                                            )}
+                                                        >
+                                                            <span>{c.name}</span>
+                                                            <span>Add weight</span>
+                                                            <span>Add reps</span>
+                                                            <span>Add sets</span>
+                                                        </div>                      
+                                                    )
+                                                })}
+                                            </div>
+                                        )
+                                        )
+                                    })}
                                     
-                                </div>}
+                                </div>
+                                
+
                             </div>
                             <Button type="submit">
                                 Add

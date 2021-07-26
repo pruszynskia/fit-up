@@ -35,7 +35,7 @@ const WorkoutDetails = ({workout}: WorkoutDetailsProps) => {
             {/* Bodypart iteration */}
             {bodyParts.map((b: any, id:any) => {
                 return (
-                Boolean(workout[b]?.length) && (
+                Boolean(workout.exercises?.length) && (
                     <div key={id}
                         className={classnames(
                             classes.container, 
@@ -46,7 +46,7 @@ const WorkoutDetails = ({workout}: WorkoutDetailsProps) => {
                         <span className={classnames(classes.bold)}>{b}</span>
                         <div>
                         {
-                            workout[b].map((c: any, id: any) => (
+                            workout.exercises.filter((ex: any) => ex.bodyPart === b).map((c: any, id: any) => (
                                 <span 
                                     key={id}  
                                     className={classnames(

@@ -9,7 +9,5 @@ export default function DisplayCalendar({formOpen}: any) {
     // const onSelect = (d: moment.Moment) => alert("Clicked: " + d.format("DD-MM-YYYY"))
     const onSelect = formOpen
     
-    console.log("temp.tsx", selectedDay)
-
     return <DatePickerC selectedDay={selectedDay} setSelectedDay={setSelectedDay} onSelect={onSelect} />
 }

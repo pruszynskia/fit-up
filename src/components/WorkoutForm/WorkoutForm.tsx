@@ -6,7 +6,7 @@ import useStyles from './WorkoutForm.styles';
 import classnames from 'classnames';
 
 import workoutList from '../../temp/workoutList.json';
-import initialState from '../../temp/initialState.json'
+// import initialState from '../../temp/initialState.json'
 
 import {
     Button,
@@ -25,7 +25,10 @@ const WorkoutForm = ({handleClose, data}: WorkoutFormProps) => {
 
     const bodyParts = ["chest", "back", "arms", "triceps", "biceps", "legs", "calfes", "abs"];
     const exercises: Array<{name: string; bodyPart: string}> = workoutList;
-
+    const initialState = {
+        name: "",
+        exercises: []
+    }
     // const data
     let [formData, setFormData] = useState<any>(data ? data : initialState);
 
@@ -50,8 +53,6 @@ const WorkoutForm = ({handleClose, data}: WorkoutFormProps) => {
     };
 
     console.log("formData", formData)
-    // console.log("exercises", exercises)
-
     return (
         <div className={classes.root}>
             <form onSubmit={(e: any) => handleSubmit(e)}>
@@ -79,24 +80,21 @@ const WorkoutForm = ({handleClose, data}: WorkoutFormProps) => {
                             <div key={idx}>
                                 {
                                 <Checkbox
-                                    checked={formData[b].map((el: any) => el.name).includes(ex.name)}
+                                    checked={formData.exercises.map((el: any) => el.name).includes(ex.name)}
                                     name={ex.name}
                                     onChange={(e: any) =>{
                                         if(e.target.checked) {
                                             setFormData({
                                             ...formData,
-                                            [b]: [...formData[b], {
-                                                name: ex.name
-                                            }]
+                                            exercises: [...formData.exercises, {name: ex.name, bodyPart: b}]
                                         })
                                   
                                     }
                                         else {
                                             setFormData({
                                                 ...formData,
-                                                [b]: formData[b].filter((ex_: any) => ex_.name !== ex.name)
+                                                exercises: formData.exercises.filter((ex_: any) => ex_.name !== ex.name)
                                             })
-                               
                                         }
                                     }}
                                 />
