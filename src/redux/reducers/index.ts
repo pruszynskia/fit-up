@@ -53,6 +53,7 @@ export default function rootReducer(state: StateType = initialState, action: any
             };
         }
         case ADD_WORKOUT_DAY:{
+            // console.log("add workout day", ...state.workoutDays)
             return {
                 ...state,
                 workoutDays: [...state.workoutDays, {id:v4(), ...action.payload}]

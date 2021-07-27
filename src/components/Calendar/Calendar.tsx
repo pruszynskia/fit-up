@@ -25,6 +25,8 @@ import {
 } from '@material-ui/core';
 
 import DisplayCalendar from "./DisplayCalendar";
+import { WorkoutDayDetails } from '../../lib/types'
+import ExerciseListStyles from "../ExerciseList/ExerciseList.styles";
 
 const Calendar = () => {
     const classes = useStyles();
@@ -33,9 +35,11 @@ const Calendar = () => {
     const [selectedDate, handleDateChange] = useState<any>(new Date());
 
     const [open, setOpen] = React.useState(false);
+
     const workouts = useSelector((state: any) => state.workout)
 
-    let [calendarFormData, setCalendarFormData] = useState<any>();
+    // Form
+    let [calendarFormData, setCalendarFormData] = useState<WorkoutDayDetails>();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -67,16 +71,15 @@ const Calendar = () => {
     var monthDays = moment.range(monthStart, monthEnd)
 
     // Select
-    const [wName, setWName] = React.useState('');
+    const [wName, setWName] = React.useState<any>('');
 
     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-        setWName(event.target.value as string);
-        
+        setWName(event.target.value as Object);
     };
 
-
+    console.log("")
     console.log("workouts", workouts)
-    
+    console.log("calendarFormData", calendarFormData)
     return (
         <div className={classes.root}>
             <div className={classnames(
@@ -123,7 +126,7 @@ const Calendar = () => {
                                         value={wName}
                                         onChange={handleChange}    
                                     >
-                                        {workouts.map((pos: any, id: any) => <MenuItem key={id}>{pos.name}</MenuItem>)}    
+                                        {workouts.map((pos: any, id: any) => <MenuItem key={id} value={pos}>{pos.name}</MenuItem>)}    
                                     </Select>
                                 </FormControl>
                                 <div className={classnames(
@@ -131,36 +134,39 @@ const Calendar = () => {
                                     classes.column,
                                     )}
                                 >
-                                    {Boolean(workouts?.length) && workouts.map((b: any, id:any) => {
-                                        console.log("b", b)
-                                        return (
-                                         (
-                                            <div key={id}
-                                                className={classnames(
-                                                    classes.container, 
-                                                    classes.column,
-                                                    classes.offset
-                                                )}
-                                            ><span>{b.name}</span>
-                                                {b.exercises.map((c:any, idx:any) => {
-                                                    return (
-                                                        <div key={b.name+"-exercise-"+idx}
-                                                            className={classnames(
-                                                                classes.row,
-                                                            )}
-                                                        >
-                                                            <span>{c.name}</span>
-                                                            <span>Add weight</span>
-                                                            <span>Add reps</span>
-                                                            <span>Add sets</span>
-                                                        </div>                      
-                                                    )
-                                                })}
-                                            </div>
-                                        )
-                                        )
-                                    })}
-                                    
+                                    {Boolean(wName.exercises?.length) && wName.exercises.map((ex:any, key:any) => 
+                                        <div key={key} 
+                                            className={classnames(
+                                                classes.container,
+                                                classes.row
+                                            )}
+                                        >
+                                            <span>{ex.name}</span>
+                                            <TextField className={classes.offset}
+                                                label="Weight" 
+                                                type="number"
+                                                variant="outlined"
+                                                value={calendarFormData.exercises.map((ex: any) => ex)}
+                                                onChange={(e: any) => 
+                                                    setCalendarFormData({
+                                                        ...calendarFormData,
+                                                        exercises: calendarFormData.exercises.map((ex: any) => ex)
+                                                    })
+                                                    }                                              
+                                                
+                                            />
+                                            <TextField className={classes.offset}
+                                                label="Reps" 
+                                                type="number"
+                                                variant="outlined"
+                                            />
+                                            <TextField className={classes.offset}
+                                                label="Sets" 
+                                                type="number"
+                                                variant="outlined"
+                                            />
+                                        </div>
+                                    )}
                                 </div>
                                 
 
