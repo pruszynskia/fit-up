@@ -23,6 +23,7 @@ import {
 } from '@material-ui/core';
 
 import { WorkoutDayDetails, WorkoutDayExerciseDetails, Workout, RootState } from '../../lib/types'
+import { isTargetLikeServerless } from 'next/dist/next-server/server/config';
 
 interface WorkoutFormProps {
     handleClose: Function;
@@ -137,9 +138,10 @@ const WorkoutDayForm = ({ handleClose, data}: WorkoutFormProps) => {
                                             exercises: workoutDayFormData.exercises.map((el: WorkoutDayExerciseDetails) => (
                                                 {
                                                     ...el,
+                                                    weight: e.target.value
                                                 }
-                                                )),
-                                            
+                                                )
+                                            ),
                                         })
                                         }                                              
                                     
@@ -148,11 +150,35 @@ const WorkoutDayForm = ({ handleClose, data}: WorkoutFormProps) => {
                                     label="Reps" 
                                     type="number"
                                     variant="outlined"
+                                    value={ex.sets}
+                                    onChange={(e: any) => 
+                                        setWorkoutDayFormData({
+                                            ...workoutDayFormData,
+                                            exercises: workoutDayFormData.exercises.map((el: WorkoutDayExerciseDetails) => (
+                                                {
+                                                    ...el,
+                                                    reps: e.target.value
+                                                }
+                                            )),
+                                        })
+                                        }    
                                 />
                                 <TextField className={classes.offset}
                                     label="Sets" 
                                     type="number"
                                     variant="outlined"
+                                    value={ex.weight}
+                                    onChange={(e: any) => 
+                                        setWorkoutDayFormData({
+                                            ...workoutDayFormData,
+                                            exercises: workoutDayFormData.exercises.map((el: WorkoutDayExerciseDetails) => (
+                                                {
+                                                    ...el,
+                                                    sets: e.target.value
+                                                }
+                                            )),
+                                        })
+                                        }    
                                 />
                             </div>
                         )}
