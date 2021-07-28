@@ -11,9 +11,24 @@ import moment from "moment";
 //     calfes: string[];
 //     abs: string[];
 // }
+
+export interface RootState {
+    workout: Array<Workout>;
+    workoutDays: Array<WorkoutDayDetails>
+}
+
 export interface Exercise {
     name: string;
     bodyPart: string
+}
+
+export interface WorkoutDayExerciseDetails {
+    name: string;
+    bodyPart: string
+    sets: number;
+    reps: number;
+    weight: number;
+    note?: string;
 }
 
 export interface WorkoutDayDetails {
@@ -21,14 +36,7 @@ export interface WorkoutDayDetails {
     workoutID: string
     workoutName: string
     date: string;
-    exercises: Array<{
-        name: string;
-        bodyPart: string
-        sets: number;
-        reps: number;
-        weight: number;
-        note: string;
-    }>;
+    exercises: Array<WorkoutDayExerciseDetails>;
 }
 
 export interface Workout {

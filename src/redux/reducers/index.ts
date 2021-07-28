@@ -11,20 +11,17 @@ import {v4} from 'uuid';
 
 import data from '../../../src/temp/workoutList.json'
 import WorkoutDetailsStyles from '../../components/WorkoutDetails/WorkoutDetails.styles';
-import {Exercise, WorkoutDayDetails} from '../../lib/types'
+import {RootState} from '../../lib/types'
 
 
-interface StateType {
-    workout: Array<Exercise>;
-    workoutDays: Array<WorkoutDayDetails>
-}
 
-const initialState: StateType = {
+
+const initialState: RootState = {
     workout: [],
     workoutDays: [],
 }
 
-export default function rootReducer(state: StateType = initialState, action: any) {
+export default function rootReducer(state: RootState = initialState, action: any) {
     switch(action.type) {
         case ADD_WORKOUT: {
             return {
@@ -53,7 +50,6 @@ export default function rootReducer(state: StateType = initialState, action: any
             };
         }
         case ADD_WORKOUT_DAY:{
-            // console.log("add workout day", ...state.workoutDays)
             return {
                 ...state,
                 workoutDays: [...state.workoutDays, {id:v4(), ...action.payload}]

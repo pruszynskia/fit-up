@@ -52,7 +52,6 @@ const WorkoutForm = ({handleClose, data}: WorkoutFormProps) => {
         handleClose();
     };
 
-    console.log("formData", formData)
     return (
         <div className={classes.root}>
             <form onSubmit={(e: any) => handleSubmit(e)}>
