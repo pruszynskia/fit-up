@@ -32,7 +32,7 @@ const WorkoutDayForm = ({ handleClose, data, date }: WorkoutFormProps) => {
         id: "",
         workoutID: "",
         workoutName: "",
-        date: "",
+        date: date.format("DDMMYYYY"),
         exercises: [{
             name: "",
             bodyPart: "",
@@ -90,8 +90,7 @@ const WorkoutDayForm = ({ handleClose, data, date }: WorkoutFormProps) => {
                     classes.column
                     )}
                 >
-                    <span
-                    >{date.format("DD.MM.YYYY")}</span>
+                    <span>{date.format("DD.MM.YYYY")}</span>
                     <FormControl>
                         <InputLabel>Workout</InputLabel>
                         <Select

@@ -192,17 +192,11 @@ const Calendar = (props: {
                     ))}
                     {dateRange.map((date: moment.Moment) => (
                     <div key={"day-" + date.date()}>
-                        <span
-                        onClick={() => handleDayClick(date)}
-                        className={classnames(classes.day, {
-                            [classes.selected]:
-                            date.format("DDMMYYYY") === selectedDay.format("DDMMYYYY"),
-                            [classes.today]:
-                            date.format("DDMMYYYY") === moment().format("DDMMYYYY"),
-                        })}
-                        >
-                        <CalendarCell date={date} />
-                        </span>
+                        <CalendarCell 
+                            date={date} 
+                            selectedDay={selectedDay} 
+                            handleDayClick={handleDayClick}
+                        />
                     </div>
                     ))}
                 </div>
