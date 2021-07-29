@@ -5,13 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import useStyles from './WorkoutDayForm.styles';
 import classnames from 'classnames';
 
-// import initialState from '../../temp/initialState.json'
-
 import * as Moment from 'moment'
 import {extendMoment} from 'moment-range'
 const moment = extendMoment(Moment)
-import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import MomentUtils from '@date-io/moment';
 
 import {
     Button,
@@ -23,14 +19,15 @@ import {
 } from '@material-ui/core';
 
 import { WorkoutDayDetails, WorkoutDayExerciseDetails, Workout, RootState } from '../../lib/types'
-import { isTargetLikeServerless } from 'next/dist/next-server/server/config';
 
 interface WorkoutFormProps {
     handleClose: Function;
     data?: any;
+    date: moment.Moment
+
 }
 
-const WorkoutDayForm = ({ handleClose, data}: WorkoutFormProps) => {
+const WorkoutDayForm = ({ handleClose, data, date }: WorkoutFormProps) => {
     const initialState: WorkoutDayDetails = {
         id: "",
         workoutID: "",
@@ -51,12 +48,9 @@ const WorkoutDayForm = ({ handleClose, data}: WorkoutFormProps) => {
     const workouts = useSelector((state: RootState) => state.workout)
     
     // Form
-    const [selectedDate, handleDateChange] = useState<any>(new Date());
     const [wName, setWName] = React.useState<string>(workouts[0]?.name || '');
-    var selectedWorkout = workouts.filter((w: Workout) => w.name === wName)[0]
-    
-
     let [workoutDayFormData, setWorkoutDayFormData] = useState<WorkoutDayDetails>(data ? data : initialState);
+    var selectedWorkout = workouts.filter((w: Workout) => w.name === wName)[0]
  
     const handleSubmit = (e: any) => {
         e.preventDefault();
@@ -85,8 +79,9 @@ const WorkoutDayForm = ({ handleClose, data}: WorkoutFormProps) => {
         setWName(event.target.value as string);
     };
 
+    console.log("selectedWorkout", selectedWorkout)
     console.log("workoutDayFormData", workoutDayFormData)
-
+    console.log("date", date)
     return (
         <div className={classes.root}>
             <form onSubmit={(e: any) => handleSubmit(e)}>
@@ -95,14 +90,8 @@ const WorkoutDayForm = ({ handleClose, data}: WorkoutFormProps) => {
                     classes.column
                     )}
                 >
-                    <MuiPickersUtilsProvider utils={MomentUtils}>
-                        <DatePicker
-                            label="Date"
-                            value={selectedDate}
-                            onChange={handleDateChange}
-                            animateYearScrolling
-                        />
-                    </MuiPickersUtilsProvider>
+                    <span
+                    >{date.format("DD.MM.YYYY")}</span>
                     <FormControl>
                         <InputLabel>Workout</InputLabel>
                         <Select
