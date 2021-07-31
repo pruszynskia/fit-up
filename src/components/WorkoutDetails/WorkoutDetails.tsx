@@ -63,9 +63,6 @@ const WorkoutDetails = ({workout}: WorkoutDetailsProps) => {
                 )
                 )
             })}
-
-            {/* Chest */}
-           
         </div>
     )
 }

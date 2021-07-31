@@ -21,13 +21,13 @@ import {
 import { WorkoutDayDetails, WorkoutDayExerciseDetails, Workout, RootState } from '../../lib/types'
 
 interface WorkoutFormProps {
-    handleClose: Function;
+    handleCloseF: Function;
     data?: any;
     date: moment.Moment
 
 }
 
-const WorkoutDayForm = ({ handleClose, data, date }: WorkoutFormProps) => {
+const WorkoutDayForm = ({ handleCloseF, data, date }: WorkoutFormProps) => {
     const initialState: WorkoutDayDetails = {
         id: "",
         workoutID: "",
@@ -59,7 +59,7 @@ const WorkoutDayForm = ({ handleClose, data, date }: WorkoutFormProps) => {
             type: 'ADD_WORKOUT_DAY',
             payload: workoutDayFormData
         });
-        handleClose();
+        handleCloseF();
     };
 
      // Calendar
@@ -166,18 +166,16 @@ const WorkoutDayForm = ({ handleClose, data, date }: WorkoutFormProps) => {
                                                 }
                                             )),
                                         })
-                                        }    
+                                    }    
                                 />
                             </div>
                         )}
                     </div>
-                                
-
-                            </div>
-                            <Button type="submit">
-                                Add
-                            </Button>
-                        </form>
+                </div>
+                <Button type="submit">
+                    Add
+                </Button>
+            </form>
         </div>
     )
 }

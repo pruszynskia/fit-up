@@ -23,7 +23,7 @@ const initialState: RootState = {
         exercises: [],
         workoutName: "qwe1",
        workoutID: "1",
-       date: "15072021" 
+       date: "date" 
     }],
 }
 

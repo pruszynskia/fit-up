@@ -20,10 +20,13 @@ export default makeStyles(theme => ({
         marginLeft: "20px"
     },
     hasData: {
-        display: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         width: "100%",
-        height: "auto",
-        backgroundColor: "#424242 !important",
+        height: "100%",
+        borderRadius: "50%",
+        backgroundColor: theme.palette.secondary.main,
         color: "#fff",
 
     },

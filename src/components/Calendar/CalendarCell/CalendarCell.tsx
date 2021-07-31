@@ -10,8 +10,9 @@ import {
     DialogContent,
 } from '@material-ui/core';
 
-import WorkoutDayForm from '../../WorkoutDayForm';
+import ListOfWorkoutDayForm from '../../ListOfWorkoutDayForm';
 import {RootState, WorkoutDayDetails} from '../../../lib/types'
+
 
 interface CalendarCellProps {
     date: moment.Moment;
@@ -55,11 +56,11 @@ export default function CalendarCell({date, selectedDay, handleDayClick}: Calend
                 )}
             >
                 <Dialog
-                        open={open} 
-                        onClose={handleClose} 
+                    open={open} 
+                    onClose={handleClose} 
                 >
                     <DialogContent>
-                        <WorkoutDayForm 
+                        <ListOfWorkoutDayForm 
                             date={date} 
                             handleClose={handleClose}
                         />

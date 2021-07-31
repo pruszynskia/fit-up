@@ -31,14 +31,15 @@ export default function OptionsMenu ({workout}:any) {
         setAnchorEl(null);
     };
 
-    // Remove workout button
-    
+    // Remove workout button    
     const handleDelete = (id: any) => {
         dispatch({
             type: 'DELETE_WORKOUT',
             payload: id
         });
     }
+
+   
     
     // Edit workout button
     const [openEditWorkout, setOpenEditWorkout] = useState(false);
