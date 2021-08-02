@@ -15,7 +15,7 @@ import {
     DialogContent
 } from '@material-ui/core';
 
-import { Workout, RootState } from '../../lib/types'
+import { RootState, Workout, WorkoutDayDetails } from '../../lib/types'
 
 import WorkoutDayForm from '../WorkoutDayForm';
 
@@ -29,27 +29,45 @@ const ListOfWorkoutDayForm = ({handleClose, date }: WorkoutFormProps) => {
 
     const classes = useStyles();
     const dispatch = useDispatch();
-    const workouts = useSelector((state: RootState) => state.workout)
+    const workouts = useSelector((state: RootState) => state.workoutDays);
  
-    const [openF, setOpenF] = useState<boolean>(false)
-    const handleOpenF = () => setOpenF(true)
-    const handleCloseF = () => setOpenF(false)
+    const [openF, setOpenF] = useState<boolean>(false);
+    // const [openF2, setOpenF2] = useState<boolean>(false);
+   
+    const handleOpenF = () => setOpenF(true);
+    // const handleOpenF2 = () => setOpenF(true);
+    const handleCloseF = () => setOpenF(false);
+    // const handleCloseF2 = () => setOpenF(false);
 
-    console.log("workouts", workouts)
-    console.log("workout name", workouts[0].name)
+    console.log("workouts", workouts);
     return (
         <div className={classes.root}>
             <span>Workouts</span>
-            { Boolean(workouts?.length) && workouts.map((w: Workout, id: any) => 
+            
+            { Boolean(workouts?.length) && workouts.filter((w: WorkoutDayDetails) => w.date === date.format("DDMMYYYY")).map((w: WorkoutDayDetails, id: any) => (
                 <div key={id}>
                     <Button
                         // className={}
                         color="primary"
                         variant="contained"
-                        onClick={handleOpenF}
+                        onClick={handleOpenF /**handleOpenF2 */}
                     >
-                        {w.name}
+                        {w.workoutName}
                     </Button>
+                    {/* <Dialog 
+                        open={openF} 
+                        onClose={handleCloseF2}
+                        >
+                        <DialogContent>
+                            <WorkoutDayForm 
+                                data={data}
+                                date={date}
+                                handleCloseF={handleCloseF2} 
+                            />
+                        </DialogContent>
+                    </Dialog> */}
+                </div>
+            ))}
                     <Dialog 
                         open={openF} 
                         onClose={handleCloseF}
@@ -58,13 +76,12 @@ const ListOfWorkoutDayForm = ({handleClose, date }: WorkoutFormProps) => {
                             <WorkoutDayForm 
                                 date={date}
                                 handleCloseF={handleCloseF} 
-                                />
+                            />
                         </DialogContent>
                     </Dialog>
-                </div>
-            )}
             <Button
-                variant="contained"
+            variant="contained"
+            onClick={handleOpenF}
             >
                 Add Workout
             </Button>

@@ -28,10 +28,19 @@ interface WorkoutFormProps {
 }
 
 const WorkoutDayForm = ({ handleCloseF, data, date }: WorkoutFormProps) => {
+    
+
+    const classes = useStyles();
+    const dispatch = useDispatch();
+    const workouts = useSelector((state: RootState) => state.workout)
+    
+    // Form
+    const [wName, setWName] = React.useState<string>(workouts[0]?.name || '');
+
     const initialState: WorkoutDayDetails = {
         id: "",
         workoutID: "",
-        workoutName: "",
+        workoutName: wName,
         date: date.format("DDMMYYYY"),
         exercises: [{
             name: "",
@@ -43,12 +52,6 @@ const WorkoutDayForm = ({ handleCloseF, data, date }: WorkoutFormProps) => {
         }]
     }
 
-    const classes = useStyles();
-    const dispatch = useDispatch();
-    const workouts = useSelector((state: RootState) => state.workout)
-    
-    // Form
-    const [wName, setWName] = React.useState<string>(workouts[0]?.name || '');
     let [workoutDayFormData, setWorkoutDayFormData] = useState<WorkoutDayDetails>(data ? data : initialState);
     var selectedWorkout = workouts.filter((w: Workout) => w.name === wName)[0]
  
@@ -77,11 +80,11 @@ const WorkoutDayForm = ({ handleCloseF, data, date }: WorkoutFormProps) => {
 
     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         setWName(event.target.value as string);
+        setWorkoutDayFormData({...workoutDayFormData, workoutName: event.target.value as string})
     };
 
     console.log("selectedWorkout", selectedWorkout)
     console.log("workoutDayFormData", workoutDayFormData)
-    console.log("date", date)
     return (
         <div className={classes.root}>
             <form onSubmit={(e: any) => handleSubmit(e)}>
@@ -90,7 +93,15 @@ const WorkoutDayForm = ({ handleCloseF, data, date }: WorkoutFormProps) => {
                     classes.column
                     )}
                 >
-                    <span>{date.format("DD.MM.YYYY")}</span>
+                    <span onChange={() => 
+                        setWorkoutDayFormData({
+                            ...workoutDayFormData,
+                            date: workoutDayFormData.date
+                        })
+                        } 
+                    >
+                        {date.format("DD.MM.YYYY")}
+                    </span>
                     <FormControl>
                         <InputLabel>Workout</InputLabel>
                         <Select
@@ -98,7 +109,13 @@ const WorkoutDayForm = ({ handleCloseF, data, date }: WorkoutFormProps) => {
                             value={wName}
                             onChange={handleChange}    
                         >
-                            {workouts.map((pos: Workout, id: any) => <MenuItem key={id} value={pos.name}>{pos.name}</MenuItem>)}    
+                            {workouts.map((pos: Workout, id: any) => 
+                                <MenuItem 
+                                    key={id} 
+                                    value={pos.name}
+                                >
+                                    {pos.name}
+                                </MenuItem>)}    
                         </Select>
                     </FormControl>
                     <div className={classnames(
@@ -114,7 +131,14 @@ const WorkoutDayForm = ({ handleCloseF, data, date }: WorkoutFormProps) => {
                                     classes.row
                                 )}
                             >
-                                <span>{ex.name}</span>
+                                <span
+                                    // onChange={() => 
+                                    //     setWorkoutDayFormData({
+                                    //         ...workoutDayFormData,
+                                    //         workoutName: //workoutDayFormData.workoutName
+                                    //     })
+                                       
+                                >{ex.name}</span>
                                 <TextField className={classes.offset}
                                     label="Weight" 
                                     type="number"

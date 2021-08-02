@@ -13,17 +13,14 @@ import data from '../../../src/temp/workoutList.json'
 import WorkoutDetailsStyles from '../../components/WorkoutDetails/WorkoutDetails.styles';
 import {RootState} from '../../lib/types'
 
-
-
-
 const initialState: RootState = {
     workout: [],
     workoutDays: [{
-        id: "1",
+        id: "",
         exercises: [],
-        workoutName: "qwe1",
-       workoutID: "1",
-       date: "date" 
+        workoutName: "",
+       workoutID: "",
+       date: "" 
     }],
 }
 
