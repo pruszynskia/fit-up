@@ -18,6 +18,7 @@ import {
 import { RootState, Workout, WorkoutDayDetails } from '../../lib/types'
 
 import WorkoutDayForm from '../WorkoutDayForm';
+import OptionsMenuDay from '../common/OptionsMenuDay';
 
 interface WorkoutFormProps {
     handleClose: Function;
@@ -42,7 +43,15 @@ const ListOfWorkoutDayForm = ({handleClose, date }: WorkoutFormProps) => {
     console.log("workouts", workouts);
     return (
         <div className={classes.root}>
-            <span>Workouts</span>
+            <span className={classnames(
+                classes.container,
+                classes.row,
+                classes.title, 
+                classes.bold
+                )}
+            >
+                Workouts
+            </span>
             
             { Boolean(workouts?.length) && workouts.filter((w: WorkoutDayDetails) => w.date === date.format("DDMMYYYY")).map((w: WorkoutDayDetails, id: any) => (
                 <div key={id}>

@@ -66,12 +66,6 @@ export default function rootReducer(state: RootState = initialState, action: any
             };
         }
 
-        case "ADD_WORKOUT_DAY2": 
-            return {
-                ...state,
-                workoutDays: [...state.workoutDays, action.payload]
-            }
-
         case EDIT_WORKOUT_DAY:{
             return {
                 ...state,

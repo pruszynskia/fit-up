@@ -7,9 +7,7 @@ export default makeStyles(theme => ({
     },
     container: {
         display: "flex",
-        justifyContent: "center",
-        alignItems: "baseline",
-        padding: "20px",
+        flexWrap: "wrap",
     },
     column: {
         flexDirection: "column",
@@ -21,11 +19,5 @@ export default makeStyles(theme => ({
     },
     offset: {
         marginLeft: "20px"
-    },
-    title: {
-        textTransform: "uppercase"
-    }, 
-    bold: {
-        fontWeight: "bold"
     }
-}))
+})) 
