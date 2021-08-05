@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import useStyles from './OptionsMenu.styles';
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';

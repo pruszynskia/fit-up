@@ -83,8 +83,6 @@ const WorkoutDayForm = ({ handleCloseF, data, date }: WorkoutFormProps) => {
         setWorkoutDayFormData({...workoutDayFormData, workoutName: event.target.value as string})
     };
 
-    console.log("selectedWorkout", selectedWorkout)
-    console.log("workoutDayFormData", workoutDayFormData)
     return (
         <div className={classes.root}>
             <form onSubmit={(e: any) => handleSubmit(e)}>

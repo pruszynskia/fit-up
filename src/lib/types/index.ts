@@ -17,9 +17,23 @@ export interface RootState {
     workoutDays: Array<WorkoutDayDetails>
 }
 
+export interface Workout {
+    id: string;
+    name: string
+    exercises: Array<Exercise>
+}
+
 export interface Exercise {
     name: string;
     bodyPart: string
+}
+
+export interface WorkoutDayDetails {
+    id: string
+    workoutID: string
+    workoutName: string
+    date: string;
+    exercises: Array<WorkoutDayExerciseDetails>;
 }
 
 export interface WorkoutDayExerciseDetails {
@@ -31,19 +45,12 @@ export interface WorkoutDayExerciseDetails {
     note?: string;
 }
 
-export interface WorkoutDayDetails {
-    id: string
-    workoutID: string
-    workoutName: string
-    date: string;
-    exercises: Array<WorkoutDayExerciseDetails>;
-}
 
-export interface Workout {
-    id: string;
-    name: string
-    exercises: Array<Exercise>
-}
+
+
+
+
+
 /**
  * [
  * {
