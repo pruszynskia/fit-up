@@ -15,13 +15,7 @@ import {RootState} from '../../lib/types'
 
 const initialState: RootState = {
     workout: [],
-    workoutDays: [{
-        id: "",
-        exercises: [],
-        workoutName: "",
-       workoutID: "",
-       date: "" 
-    }],
+    workoutDays: [],
 }
 
 export default function rootReducer(state: RootState = initialState, action: any) {

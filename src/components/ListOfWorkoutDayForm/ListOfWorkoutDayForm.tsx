@@ -21,24 +21,36 @@ import { RootState, Workout, WorkoutDayDetails } from '../../lib/types'
 import WorkoutDayForm from '../WorkoutDayForm';
 
 interface WorkoutFormProps {
-    handleClose: Function;
+    data?: any;
     date: moment.Moment
 
 }
 
-const ListOfWorkoutDayForm = ({handleClose, date }: WorkoutFormProps) => {
+const ListOfWorkoutDayForm = ({ data, date }: WorkoutFormProps) => {
 
     const classes = useStyles();
     const dispatch = useDispatch();
     const workouts = useSelector((state: RootState) => state.workoutDays);
  
     const [openF, setOpenF] = useState<boolean>(false);
-    const [openF2, setOpenF2] = useState<boolean>(false);
+    const [openEdit, setEditOpen] = useState<boolean>(false);
+    const [, updateState] = useState({});
+
+    const forceUpdate = React.useCallback(() => updateState({}), []);
    
     const handleOpenF = () => setOpenF(true);
-    const handleOpenF2 = (data) => setOpenF(true);
     const handleCloseF = () => setOpenF(false);
-    const handleCloseF2 = () => setOpenF(false);
+    const handleEditOpen = (data) => {
+        setEditOpen(true);
+        // dispatch({
+        //     type: 'EDIT_WORKOUT_DAY',
+        //     payload: edit
+        // });
+    };
+    const handleEditClose = () => {
+        setEditOpen(false);
+        forceUpdate();
+    }
 
     // Remove workout button    
     const handleDelete = (id: any) => {
@@ -47,7 +59,7 @@ const ListOfWorkoutDayForm = ({handleClose, date }: WorkoutFormProps) => {
             payload: id
         });
     }
-    console.log("workouts", workouts)
+    // console.log("workouts", workouts)
     return (
         <div className={classes.root}>
             <span className={classnames(
@@ -66,19 +78,19 @@ const ListOfWorkoutDayForm = ({handleClose, date }: WorkoutFormProps) => {
                         // className={}
                         color="primary"
                         variant="contained"
-                        onClick={() => handleOpenF2(w.id)}
+                        onClick={handleEditOpen}
                     >
                         {w.workoutName}
                     </Button>
                     <Dialog 
-                        open={openF2} 
-                        onClose={handleCloseF2}
+                        open={openEdit} 
+                        onClose={handleEditClose}
                         >
                         <DialogContent>
                             <WorkoutDayForm 
-                                // data={data}
+                                data={w}
                                 date={date}
-                                handleCloseF={handleCloseF2} 
+                                handleCloseF={handleEditClose} 
                             />
                         </DialogContent>
                     </Dialog>

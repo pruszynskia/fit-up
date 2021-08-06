@@ -14,6 +14,8 @@ import {
     TextField
 } from '@material-ui/core';
 
+import {v4} from 'uuid'
+
 interface WorkoutFormProps {
     handleClose: Function;
     data?: any;
@@ -26,6 +28,7 @@ const WorkoutForm = ({handleClose, data}: WorkoutFormProps) => {
     const bodyParts = ["chest", "back", "arms", "triceps", "biceps", "legs", "calfes", "abs"];
     const exercises: Array<{name: string; bodyPart: string}> = workoutList;
     const initialState = {
+        id: v4(),
         name: "",
         exercises: []
     }
