@@ -1,223 +1,70 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import useStyles from './WorkoutDayForm.styles';
 import classnames from 'classnames';
-
-import * as Moment from 'moment'
-import {extendMoment} from 'moment-range'
-const moment = extendMoment(Moment)
+import moment from "moment";
 import {v4} from 'uuid'
 
 import {
-    Button,
-    InputLabel,
-    Select,
     MenuItem,
-    FormControl,
-    TextField,
+    Select
 } from '@material-ui/core';
+import { RootState, WorkoutDayDetails } from "../../lib/types";
 
-import { WorkoutDayDetails, WorkoutDayExerciseDetails, Workout, RootState } from '../../lib/types'
-
-interface WorkoutDayFormProps {
-    handleCloseF: Function;
+interface WorkoutDayForm {
     data?: WorkoutDayDetails;
-    date: moment.Moment
-
+    date: moment.Moment;
+    handleCloseF: Function
 }
 
-const WorkoutDayForm = ({ handleCloseF, data, date }: WorkoutDayFormProps) => {
-    
-    const edit = Boolean(data)
-    const classes = useStyles();
-    const dispatch = useDispatch();
-    const workouts = useSelector((state: RootState) => state.workout)
-    
-    // Form
-    const [wName, setWName] = React.useState<string>(data?.workoutName || workouts[0]?.name || '');
+export default function WorkoutDayForm({ data, date, handleCloseF }: WorkoutDayForm) {
 
+    const workouts = useSelector((state: RootState) => state.workout)
     const initialState: WorkoutDayDetails = {
         id: data?.id || v4(),
-        workoutID: data?.workoutID || workouts[0].id,
-        workoutName: data?.workoutName || workouts[0].name,
-        date: data?.date || date.format("DDMMYYYY"),
-        exercises: data?.exercises || workouts[0].exercises.map((ex: any) => ({
+        workoutID: workouts[0].id || data?.workoutID,
+        workoutName: workouts[0].name || data?.workoutName,
+        date: date.format("DDMMYYYY") || data?.date,
+        exercises: workouts[0].exercises.map((ex: any) => ({
             name: ex.name,
             bodyPart: ex.bodyPart,
             sets: 0,
             reps: 0,
             weight: 0,
             note: ""
-        }))
+        })) || data?.exercises 
     }
 
-    let [workoutDayFormData, setWorkoutDayFormData] = useState<WorkoutDayDetails>(data ? data : initialState);
-    var selectedWorkout = initialState
- 
-    const handleSubmit = (e: any) => {
-        e.preventDefault();
+    const classes = useStyles();
 
-        if(edit) {
-            dispatch({
-                type: 'EDIT_WORKOUT_DAY',
-                payload: workoutDayFormData
-            })
-        }
-        else {
-            dispatch({
-                type: 'ADD_WORKOUT_DAY',
-                payload: workoutDayFormData
-            });
-        }
-        handleCloseF();
-    };
+    let [selectedName, setSelectedName] = useState<string>(initialState.workoutName)
 
-     // Calendar
-     var days: number[] = []
-    
-     if(days.length == 0)
-         for(let i=1; i <= 31; i++) days.push(i)
-    
     // Select
     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-        setWName(event.target.value as string);
-        setWorkoutDayFormData({...workoutDayFormData, workoutName: event.target.value as string})
+        setSelectedName(event.target.value as string);
+        // setWorkoutDayFormData({...workoutDayFormData, workoutName: event.target.value as string})
     };
+
+    console.log("workouts", workouts)
 
     return (
         <div className={classes.root}>
-            <span>{edit ? "EDIT WORKOUT" : "ADD WORKOUT"}</span>
-            <form onSubmit={(e: any) => handleSubmit(e)}>
-                <div className={classnames(
-                    classes.container,
-                    classes.column
-                    )}
-                >
-                    <span>
-                        {date.format("DD.MM.YYYY")}
-                    </span>
-                    <FormControl>
-                        <InputLabel>Workout</InputLabel>
-                        <Select
-                            id='id'
-                            value={selectedWorkout.workoutName}
-                            onChange={handleChange}    
-                        >
-                            {workouts.map((pos: Workout, id: any) => 
-                                <MenuItem 
-                                    key={id} 
-                                    value={pos.name}
-                                >
-                                    {pos.name}
-                                </MenuItem>
-                                )}    
-                        </Select>
-                    </FormControl>
-                    <div className={classnames(
-                        classes.container,
-                        classes.column,
-                        )}
+            <div>{date.format("DD.MM.YYYY")}</div>
+            <Select
+                value={initialState.workoutName}
+                // onChange={}
+            >
+                {workouts.map((pos: WorkoutDayDetails, id: any) => 
+                    <MenuItem 
+                        key={id} 
+                        value={pos.workoutName}
                     >
-                        {Boolean(workoutDayFormData?.exercises?.length) && 
-                                workoutDayFormData.exercises.map((ex: WorkoutDayExerciseDetails) => 
-                            <div key={ex.name} 
-                                className={classnames(
-                                    classes.container,
-                                    classes.row
-                                )}
-                            >
-                                <span
-                                    // onChange={() => 
-                                    //     setWorkoutDayFormData({
-                                    //         ...workoutDayFormData,
-                                    //         workoutName: //workoutDayFormData.workoutName
-                                    //     })
-                                       
-                                >{ex.name}</span>
-                                <TextField className={classes.offset}
-                                    label="Weight" 
-                                    type="number"
-                                    variant="outlined"
-                                    value={ex.weight}
-                                    onChange={(e: any) => 
-                                        setWorkoutDayFormData({
-                                            ...workoutDayFormData,
-                                            exercises: workoutDayFormData.exercises.map((el: WorkoutDayExerciseDetails) => {
-                                                
-                                                if(el.name === ex.name){
-                                                     return {
-                                                        ...el,
-                                                        weight: e.target.value
-                                                    } 
-                                                } else {
-                                                    return {
-                                                        ...ex
-                                                    }
-                                                }
-                                            }),
-                                        })
-                                        }                                              
-                                />
-                                <TextField className={classes.offset}
-                                    label="Reps" 
-                                    type="number"
-                                    variant="outlined"
-                                    value={ex.reps}
-                                    onChange={(e: any) => 
-                                        setWorkoutDayFormData({
-                                            ...workoutDayFormData,
-                                            exercises: workoutDayFormData.exercises.map((el: WorkoutDayExerciseDetails) => {
-                                                
-                                                if(el.name === ex.name){
-                                                     return {
-                                                        ...el,
-                                                        reps: e.target.value
-                                                    } 
-                                                } else {
-                                                    return {
-                                                        ...ex
-                                                    }
-                                                }
-                                            }),
-                                        })
-                                        }         
-                                />
-                                <TextField className={classes.offset}
-                                    label="Sets" 
-                                    type="number"
-                                    variant="outlined"
-                                    value={ex.sets}
-                                    onChange={(e: any) => 
-                                        setWorkoutDayFormData({
-                                            ...workoutDayFormData,
-                                            exercises: workoutDayFormData.exercises.map((el: WorkoutDayExerciseDetails) => {
-                                                
-                                                if(el.name === ex.name){
-                                                     return {
-                                                        ...el,
-                                                        sets: e.target.value
-                                                    } 
-                                                } else {
-                                                    return {
-                                                        ...ex
-                                                    }
-                                                }
-                                            }),
-                                        })
-                                        }         
-                                />
-                            </div>
-                        )}
-                    </div>
-                </div>
-                <Button type="submit">
-                    {edit ? "EDIT" : "ADD"}
-                </Button>
-            </form>
+                        {pos.workoutName}
+                    </MenuItem>
+                )}   
+            </Select>
+
         </div>
     )
-}
-
-export default WorkoutDayForm;
+} 

@@ -59,7 +59,7 @@ const ListOfWorkoutDayForm = ({ data, date }: WorkoutFormProps) => {
             payload: id
         });
     }
-    // console.log("workouts", workouts)
+
     return (
         <div className={classes.root}>
             <span className={classnames(

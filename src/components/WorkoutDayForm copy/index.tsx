@@ -1,1 +1,1 @@
-export {default} from './WorkoutDayForm';
+export {default} from './WorkoutDayFormCopy';

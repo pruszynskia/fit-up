@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { useSelector, useDispatch } from "react-redux";
 
-import useStyles from './WorkoutDayForm.styles';
+import useStyles from './WorkoutDayFormcopy.styles';
 import classnames from 'classnames';
 
 import * as Moment from 'moment'
@@ -28,7 +28,7 @@ interface WorkoutDayFormProps {
 
 }
 
-const WorkoutDayForm = ({ handleCloseF, data, date }: WorkoutDayFormProps) => {
+const WorkoutDayFormCopy = ({ handleCloseF, data, date }: WorkoutDayFormProps) => {
     
     const edit = Boolean(data)
     const classes = useStyles();
@@ -220,4 +220,4 @@ const WorkoutDayForm = ({ handleCloseF, data, date }: WorkoutDayFormProps) => {
     )
 }
 
-export default WorkoutDayForm;
+export default WorkoutDayFormCopy;

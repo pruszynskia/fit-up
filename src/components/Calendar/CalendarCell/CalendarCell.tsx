@@ -30,8 +30,6 @@ export default function CalendarCell({date, selectedDay, handleDayClick}: Calend
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
 
-    // console.log(data.length)
-
     return <div>
         <span
             onClick={() => handleDayClick(date)}
