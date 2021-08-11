@@ -11,7 +11,7 @@ import {v4} from 'uuid';
 
 import data from '../../../src/temp/workoutList.json'
 import WorkoutDetailsStyles from '../../components/WorkoutDetails/WorkoutDetails.styles';
-import {RootState} from '../../lib/types'
+import {RootState, WorkoutDayDetails} from '../../lib/types'
 
 const initialState: RootState = {
     workout: [],
@@ -64,11 +64,11 @@ export default function rootReducer(state: RootState = initialState, action: any
             return {
                 ...state,
                 workoutDays:
-                    state.workoutDays.map((edit: any) => {
-                        if (edit === action.payload.data.id) {
-                            return action.payload.data;
+                    state.workoutDays.map((workout: WorkoutDayDetails) => {
+                        if (workout.id === action.payload.id) {
+                            return action.payload;
                         } else {
-                            return edit;
+                            return workout;
                         }
                     })
             };

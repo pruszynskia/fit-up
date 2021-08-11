@@ -5,6 +5,8 @@ import useStyles from './WorkoutDetails.styles';
 import workoutList from '../../temp/workoutList.json';
 
 import OptionsMenu from '../common/OptionsMenu';
+import { Workout } from '../../lib/types';
+import { Exercise } from '../../temp/interface';
 
 interface RootState {
     workout: any
@@ -43,7 +45,7 @@ const WorkoutDetails = ({workout}: WorkoutDetailsProps) => {
                             classes.offset
                         )}
                     >
-                        <span className={classnames(classes.bold)}>{b}</span>
+                        {!!workout.exercises.filter((w: Exercise) => w.bodyPart === b).length && <span className={classnames(classes.bold)}>{b}</span>}
                         <div>
                         {
                             workout.exercises.filter((ex: any) => ex.bodyPart === b).map((c: any, id: any) => (

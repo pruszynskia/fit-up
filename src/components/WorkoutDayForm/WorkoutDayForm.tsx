@@ -7,6 +7,7 @@ import moment from "moment";
 import {v4} from 'uuid'
 
 import {
+    Button,
     FormControl,
     InputLabel,
     MenuItem,
@@ -23,13 +24,17 @@ interface WorkoutDayForm {
 
 export default function WorkoutDayForm({ data, date, handleCloseF }: WorkoutDayForm) {
 
+    const classes = useStyles();
+    const dispatch = useDispatch();
+    const edit = Boolean(data);
     const workouts = useSelector((state: RootState) => state.workout)
+
     const initialState: WorkoutDayDetails = {
         id: data?.id || v4(),
-        workoutID:data?.workoutID || workouts[0].id,
-        workoutName: data?.workoutName || workouts[0].name,
+        workoutID:data?.workoutID || workouts[0]?.id,
+        workoutName: data?.workoutName || workouts[0]?.name,
         date: data?.date || date.format("DDMMYYYY"),
-        exercises: workouts[0].exercises.map((ex: any) => ({
+        exercises: workouts[0]?.exercises.map((ex: any) => ({
             name: ex.name,
             bodyPart: ex.bodyPart,
             sets: 0,
@@ -39,7 +44,6 @@ export default function WorkoutDayForm({ data, date, handleCloseF }: WorkoutDayF
         })) 
     }
 
-    const classes = useStyles();
 
     let [selectedName, setSelectedName] = useState<string>(initialState.workoutName)
     let [workoutDayFormData, setWorkoutDayFormData] = useState<WorkoutDayDetails>(data ? data : initialState);
@@ -63,125 +67,146 @@ export default function WorkoutDayForm({ data, date, handleCloseF }: WorkoutDayF
         })
     };
 
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
 
-    // const handleChange = (event: React.ChangeEvent<{value: unknown}>) => {
-    //     setSelectedName(event.target.value as string)
-    //     setWorkoutDayFormData({
-    //         ...workoutDayFormData,
-    //         workoutName: event.target.value as string
-    //     })
-    // }
+        if(edit) {
+            dispatch({
+                type: "EDIT_WORKOUT_DAY",
+                payload: workoutDayFormData
+            })
+        } else {
+            dispatch({
+                type: "ADD_WORKOUT_DAY",
+                payload: workoutDayFormData
+            });
+        };
+        handleCloseF();
+    }
 
-    console.log("workouts", workouts)
+    console.log("workouts", workouts[0]?.id)
     console.log("workoutDayFormData", workoutDayFormData)
+    console.log("data", data)
 
     return (
         <div className={classes.root}>
-            <div>{date.format("DD.MM.YYYY")}</div>
-            <FormControl>
-                <InputLabel>Workout</InputLabel>
-                <Select
-                    defaultValue=""
-                    onChange={handleChange}
-                    value={selectedName}
-                    >
-                    {workouts.map((pos: Workout, id: any) => 
-                        <MenuItem 
-                        key={id} 
-                        value={pos.name}
+            <span>{edit ? "EDIT WORKOUT" : "ADD WORKOUT"}</span>
+            <form onSubmit={(e: any) => handleSubmit(e)}>  
+                <div className={classnames(
+                    classes.container,
+                    classes.column
+                    )}
+                >
+                    <span>{date.format("DD.MM.YYYY")}</span>
+                    <FormControl>
+                        <InputLabel>Workout</InputLabel>
+                        <Select
+                            defaultValue=""
+                            onChange={handleChange}
+                            value={selectedName}
+                            >
+                            {workouts.map((pos: Workout, id: any) => 
+                                <MenuItem 
+                                key={id} 
+                                value={pos.name}
+                                >
+                                    {pos.name}
+                                </MenuItem>
+                            )}   
+                        </Select>
+                    </FormControl>
+                    <div className={classnames(
+                        classes.container,
+                        classes.column,
+                        )}
                         >
-                            {pos.name}
-                        </MenuItem>
-                    )}   
-                </Select>
-            </FormControl>
-            <div className={classnames(
-                classes.container,
-                classes.column,
-                )}
-            >
-                {Boolean(workoutDayFormData?.exercises?.length) && 
-                    workoutDayFormData.exercises.map((ex: WorkoutDayExerciseDetails) =>
-                        <div key={ex.name}
+                        {Boolean(workoutDayFormData?.exercises?.length) && 
+                            workoutDayFormData.exercises.map((ex: WorkoutDayExerciseDetails) =>
+                            <div key={ex.name}
                             className={classnames(
                                 classes.container,
                                 classes.row
-                            )}
-                        >
-                            <span>{ex.name}</span>
-                            <TextField className={classes.offset}
-                                label="Weight"
-                                type="number"
-                                variant="outlined"
-                                value={ex.weight}
-                                onChange={(e: any) =>
-                                    setWorkoutDayFormData({
-                                        ...workoutDayFormData,
-                                        exercises: workoutDayFormData.exercises.map((el:WorkoutDayExerciseDetails) => {
-                                            if(el.name === ex.name) {
-                                                return {
-                                                    ...el,
-                                                    weight: e.target.value
-                                                }
-                                            } else {
-                                                return {
-                                                    ...el
-                                                }
-                                            }
-                                        })
-                                    })
-                                }
-                            />
-                            <TextField className={classes.offset}
-                                label="Reps"
-                                type="number"
-                                variant="outlined"
-                                value={ex.reps}
-                                onChange={(e: any) =>
-                                    setWorkoutDayFormData({
-                                        ...workoutDayFormData,
-                                        exercises: workoutDayFormData.exercises.map((el:WorkoutDayExerciseDetails) => {
-                                            if(el.name === ex.name) {
-                                                return {
-                                                    ...el,
-                                                    reps: e.target.value
-                                                }
-                                            } else {
-                                                return {
-                                                    ...el
-                                                }
-                                            }
-                                        })
-                                    })
-                                }
-                            />
-                            <TextField className={classes.offset}
-                                label="Sets"
-                                type="number"
-                                variant="outlined"
-                                value={ex.sets}
-                                onChange={(e: any) =>
-                                    setWorkoutDayFormData({
-                                        ...workoutDayFormData,
-                                        exercises: workoutDayFormData.exercises.map((el:WorkoutDayExerciseDetails) => {
-                                            if(el.name === ex.name) {
-                                                return {
-                                                    ...el,
-                                                    sets: e.target.value
-                                                }
-                                            } else {
-                                                return {
-                                                    ...el
-                                                }
-                                            }
-                                        })
-                                    })
-                                }
-                            />
-                        </div>
-                    )
-                }
-            </div>
+                                )}
+                                >
+                                    <span>{ex.name}</span>
+                                    <TextField className={classes.offset}
+                                        label="Weight"
+                                        type="number"
+                                        variant="outlined"
+                                        value={ex.weight}
+                                        onChange={(e: any) =>
+                                            setWorkoutDayFormData({
+                                                ...workoutDayFormData,
+                                                exercises: workoutDayFormData.exercises.map((el:WorkoutDayExerciseDetails) => {
+                                                    if(el.name === ex.name) {
+                                                        return {
+                                                            ...el,
+                                                            weight: e.target.value
+                                                        }
+                                                    } else {
+                                                        return {
+                                                            ...el
+                                                        }
+                                                    }
+                                                })
+                                            })
+                                        }
+                                        />
+                                    <TextField className={classes.offset}
+                                        label="Reps"
+                                        type="number"
+                                        variant="outlined"
+                                        value={ex.reps}
+                                        onChange={(e: any) =>
+                                            setWorkoutDayFormData({
+                                                ...workoutDayFormData,
+                                                exercises: workoutDayFormData.exercises.map((el:WorkoutDayExerciseDetails) => {
+                                                    if(el.name === ex.name) {
+                                                        return {
+                                                            ...el,
+                                                            reps: e.target.value
+                                                        }
+                                                    } else {
+                                                        return {
+                                                            ...el
+                                                        }
+                                                    }
+                                                })
+                                            })
+                                        }
+                                        />
+                                    <TextField className={classes.offset}
+                                        label="Sets"
+                                        type="number"
+                                        variant="outlined"
+                                        value={ex.sets}
+                                        onChange={(e: any) =>
+                                            setWorkoutDayFormData({
+                                                ...workoutDayFormData,
+                                                exercises: workoutDayFormData.exercises.map((el:WorkoutDayExerciseDetails) => {
+                                                    if(el.name === ex.name) {
+                                                        return {
+                                                            ...el,
+                                                            sets: e.target.value
+                                                        }
+                                                    } else {
+                                                        return {
+                                                            ...el
+                                                        }
+                                                    }
+                                                })
+                                            })
+                                        }
+                                        />
+                                </div>
+                            )
+                        }
+                    </div>
+                    <Button type="submit">
+                        {edit ? "EDIT" : "ADD"}
+                    </Button>
+                </div>
+            </form>
         </div>
     )
 } 
