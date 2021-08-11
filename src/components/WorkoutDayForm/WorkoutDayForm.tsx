@@ -7,10 +7,13 @@ import moment from "moment";
 import {v4} from 'uuid'
 
 import {
+    FormControl,
+    InputLabel,
     MenuItem,
-    Select
+    Select,
+    TextField
 } from '@material-ui/core';
-import { RootState, WorkoutDayDetails } from "../../lib/types";
+import { RootState, Workout, WorkoutDayDetails, WorkoutDayExerciseDetails } from "../../lib/types";
 
 interface WorkoutDayForm {
     data?: WorkoutDayDetails;
@@ -23,9 +26,9 @@ export default function WorkoutDayForm({ data, date, handleCloseF }: WorkoutDayF
     const workouts = useSelector((state: RootState) => state.workout)
     const initialState: WorkoutDayDetails = {
         id: data?.id || v4(),
-        workoutID: workouts[0].id || data?.workoutID,
-        workoutName: workouts[0].name || data?.workoutName,
-        date: date.format("DDMMYYYY") || data?.date,
+        workoutID:data?.workoutID || workouts[0].id,
+        workoutName: data?.workoutName || workouts[0].name,
+        date: data?.date || date.format("DDMMYYYY"),
         exercises: workouts[0].exercises.map((ex: any) => ({
             name: ex.name,
             bodyPart: ex.bodyPart,
@@ -33,38 +36,152 @@ export default function WorkoutDayForm({ data, date, handleCloseF }: WorkoutDayF
             reps: 0,
             weight: 0,
             note: ""
-        })) || data?.exercises 
+        })) 
     }
 
     const classes = useStyles();
 
     let [selectedName, setSelectedName] = useState<string>(initialState.workoutName)
+    let [workoutDayFormData, setWorkoutDayFormData] = useState<WorkoutDayDetails>(data ? data : initialState);
 
     // Select
     const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
         setSelectedName(event.target.value as string);
-        // setWorkoutDayFormData({...workoutDayFormData, workoutName: event.target.value as string})
+        setWorkoutDayFormData({
+            id: workouts.filter((w: Workout) => w.name === event.target.value as string)[0].id,
+            workoutID: workouts.filter((w: Workout) => w.name === event.target.value as string)[0].id,
+            workoutName: workouts.filter((w: Workout) => w.name === event.target.value as string)[0].name,
+            date: date.format("DDMMYYYY"),
+            exercises: workouts.filter((w: Workout) => w.name === event.target.value as string)[0].exercises.map((ex: any) => ({
+                name: ex.name,
+                bodyPart: ex.bodyPart,
+                sets: 0,
+                reps: 0,
+                weight: 0,
+                note: ""
+            })) 
+        })
     };
 
+
+    // const handleChange = (event: React.ChangeEvent<{value: unknown}>) => {
+    //     setSelectedName(event.target.value as string)
+    //     setWorkoutDayFormData({
+    //         ...workoutDayFormData,
+    //         workoutName: event.target.value as string
+    //     })
+    // }
+
     console.log("workouts", workouts)
+    console.log("workoutDayFormData", workoutDayFormData)
 
     return (
         <div className={classes.root}>
             <div>{date.format("DD.MM.YYYY")}</div>
-            <Select
-                value={initialState.workoutName}
-                // onChange={}
-            >
-                {workouts.map((pos: WorkoutDayDetails, id: any) => 
-                    <MenuItem 
-                        key={id} 
-                        value={pos.workoutName}
+            <FormControl>
+                <InputLabel>Workout</InputLabel>
+                <Select
+                    defaultValue=""
+                    onChange={handleChange}
+                    value={selectedName}
                     >
-                        {pos.workoutName}
-                    </MenuItem>
-                )}   
-            </Select>
-
+                    {workouts.map((pos: Workout, id: any) => 
+                        <MenuItem 
+                        key={id} 
+                        value={pos.name}
+                        >
+                            {pos.name}
+                        </MenuItem>
+                    )}   
+                </Select>
+            </FormControl>
+            <div className={classnames(
+                classes.container,
+                classes.column,
+                )}
+            >
+                {Boolean(workoutDayFormData?.exercises?.length) && 
+                    workoutDayFormData.exercises.map((ex: WorkoutDayExerciseDetails) =>
+                        <div key={ex.name}
+                            className={classnames(
+                                classes.container,
+                                classes.row
+                            )}
+                        >
+                            <span>{ex.name}</span>
+                            <TextField className={classes.offset}
+                                label="Weight"
+                                type="number"
+                                variant="outlined"
+                                value={ex.weight}
+                                onChange={(e: any) =>
+                                    setWorkoutDayFormData({
+                                        ...workoutDayFormData,
+                                        exercises: workoutDayFormData.exercises.map((el:WorkoutDayExerciseDetails) => {
+                                            if(el.name === ex.name) {
+                                                return {
+                                                    ...el,
+                                                    weight: e.target.value
+                                                }
+                                            } else {
+                                                return {
+                                                    ...el
+                                                }
+                                            }
+                                        })
+                                    })
+                                }
+                            />
+                            <TextField className={classes.offset}
+                                label="Reps"
+                                type="number"
+                                variant="outlined"
+                                value={ex.reps}
+                                onChange={(e: any) =>
+                                    setWorkoutDayFormData({
+                                        ...workoutDayFormData,
+                                        exercises: workoutDayFormData.exercises.map((el:WorkoutDayExerciseDetails) => {
+                                            if(el.name === ex.name) {
+                                                return {
+                                                    ...el,
+                                                    reps: e.target.value
+                                                }
+                                            } else {
+                                                return {
+                                                    ...el
+                                                }
+                                            }
+                                        })
+                                    })
+                                }
+                            />
+                            <TextField className={classes.offset}
+                                label="Sets"
+                                type="number"
+                                variant="outlined"
+                                value={ex.sets}
+                                onChange={(e: any) =>
+                                    setWorkoutDayFormData({
+                                        ...workoutDayFormData,
+                                        exercises: workoutDayFormData.exercises.map((el:WorkoutDayExerciseDetails) => {
+                                            if(el.name === ex.name) {
+                                                return {
+                                                    ...el,
+                                                    sets: e.target.value
+                                                }
+                                            } else {
+                                                return {
+                                                    ...el
+                                                }
+                                            }
+                                        })
+                                    })
+                                }
+                            />
+                        </div>
+                    )
+                }
+            </div>
         </div>
     )
 } 

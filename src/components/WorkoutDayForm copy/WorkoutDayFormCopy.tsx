@@ -102,6 +102,7 @@ const WorkoutDayFormCopy = ({ handleCloseF, data, date }: WorkoutDayFormProps) =
                         <InputLabel>Workout</InputLabel>
                         <Select
                             id='id'
+                            defaultValue=""
                             value={selectedWorkout.workoutName}
                             onChange={handleChange}    
                         >
