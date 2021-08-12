@@ -24,6 +24,8 @@ interface WorkoutFormProps {
 const WorkoutForm = ({handleClose, data}: WorkoutFormProps) => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const edit = Boolean(data)
+
 
     const bodyParts = ["chest", "back", "arms", "triceps", "biceps", "legs", "calfes", "abs"];
     const exercises: Array<{name: string; bodyPart: string}> = workoutList;
@@ -48,15 +50,23 @@ const WorkoutForm = ({handleClose, data}: WorkoutFormProps) => {
     const handleSubmit = (e: any) => {
         e.preventDefault();
 
-        dispatch({
-            type: 'ADD_WORKOUT',
-            payload: formData
-        });
+        if(edit) {
+            dispatch({
+                type: 'EDIT_WORKOUT',
+                payload: formData
+            });
+        } else {
+            dispatch({
+                type: 'ADD_WORKOUT',
+                payload: formData
+            });
+        };
         handleClose();
     };
 
     return (
         <div className={classes.root}>
+            <span>{edit ? "EDIT WORKOUT" : "ADD WORKOUT"}</span>
             <form onSubmit={(e: any) => handleSubmit(e)}>
                 <TextField
                     label="Title"
@@ -109,7 +119,7 @@ const WorkoutForm = ({handleClose, data}: WorkoutFormProps) => {
                 })}
 
                 <Button type="submit" color="primary">
-                    Create
+                    {edit ? "EDIT" : "ADD"}
                 </Button>
             </form>
         </div>

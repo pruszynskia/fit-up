@@ -38,8 +38,8 @@ export default function rootReducer(state: RootState = initialState, action: any
                 ...state,
                 workout:
                     state.workout.map((edit: any) => {
-                        if (edit === action.payload.data.id) {
-                            return action.payload.data;
+                        if (edit.id === action.payload.id) {
+                            return action.payload;
                         } else {
                             return edit;
                         }
