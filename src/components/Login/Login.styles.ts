@@ -3,14 +3,13 @@ import {makeStyles} from '@material-ui/core/styles'
 export default makeStyles(theme => ({
     root: {
         display: "flex",
-        flexDirection: "row",
-        height: "10%"
+        flexDirection: "column",
     },
     container: {
         display: "flex",
-        justifyContent: "space-around",
-        flexWrap: "wrap",
-        alignItems: "center"
+        justifyContent: "center",
+        alignItems: "baseline",
+        padding: "20px",
     },
     column: {
         flexDirection: "column",
@@ -22,5 +21,8 @@ export default makeStyles(theme => ({
     },
     offset: {
         marginLeft: "20px"
-    }
+    },
+    offsetTop: {
+        marginTop: "10px"
+    },
 }))

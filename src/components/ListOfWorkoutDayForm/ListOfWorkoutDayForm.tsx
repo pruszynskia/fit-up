@@ -42,10 +42,6 @@ const ListOfWorkoutDayForm = ({ data, date }: WorkoutFormProps) => {
     const handleCloseF = () => setOpenF(false);
     const handleEditOpen = (data) => {
         setEditOpen(true);
-        // dispatch({
-        //     type: 'EDIT_WORKOUT_DAY',
-        //     payload: edit
-        // });
     };
     const handleEditClose = () => {
         setEditOpen(false);
@@ -85,7 +81,7 @@ const ListOfWorkoutDayForm = ({ data, date }: WorkoutFormProps) => {
                     <Dialog 
                         open={openEdit} 
                         onClose={handleEditClose}
-                        >
+                    >
                         <DialogContent>
                             <WorkoutDayForm 
                                 data={w}
