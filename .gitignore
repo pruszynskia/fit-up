@@ -6,6 +6,7 @@ build/build
 
 ## SERVER
 server/node_modules
+server/dist
 
 
 ## LOCAL ENV VARIABLES
