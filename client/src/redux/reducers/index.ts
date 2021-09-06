@@ -16,6 +16,7 @@ import {RootState, WorkoutDayDetails} from '../../lib/types'
 const initialState: RootState = {
     workout: [],
     workoutDays: [],
+    test: []
 }
 
 export default function rootReducer(state: RootState = initialState, action: any) {
@@ -73,6 +74,19 @@ export default function rootReducer(state: RootState = initialState, action: any
                     })
             };
         }
+
+        case "TEST_ACTION_GET_DATA": 
+            return {
+                ...state,
+                test: action.payload
+            }
+
+        case "TEST_ACTION_ADD_DATA": 
+            return {
+                ...state,
+                test: [...state.test, action.payload]
+            }
+
         default:
             return state;
     }

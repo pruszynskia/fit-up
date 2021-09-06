@@ -15,30 +15,31 @@ import moment from "moment";
 export interface RootState {
     workout: Array<Workout>;
     workoutDays: Array<WorkoutDayDetails>
-}
+    test: any[]
+};
 
 export interface Workout {
     id: string;
-    name: string
+    name: string;
     exercises: Array<Exercise>
-}
+};
 
 export interface Exercise {
     name: string;
     bodyPart: string
-}
+};
 
 export interface WorkoutDayDetails {
-    id: string
-    workoutID: string
-    workoutName: string
+    id: string;
+    workoutID: string;
+    workoutName: string;
     date: string;
-    exercises: Array<WorkoutDayExerciseDetails>;
-}
+    exercises: Array<WorkoutDayExerciseDetails>
+};
 
 export interface WorkoutDayExerciseDetails {
     name: string;
-    bodyPart: string
+    bodyPart: string;
     sets: number;
     reps: number;
     weight: number;
