@@ -1,7 +1,7 @@
 import {useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import { RootState } from '../lib/types'
-import { testActionGetData, testActionAddData } from "../redux/actions"
+import { testActionGetData, testActionAddData, deleteWorkoutTest } from "../redux/actions"
 
 export default function Temp() {
     const dispatch = useDispatch()
@@ -16,6 +16,15 @@ export default function Temp() {
             id: "123",
             name: "new test item"
         })}>test add</button>
-        {JSON.stringify(test)}
+        {test.map((t: any) => (
+            <div>
+                <span>{t.name}</span>
+                <button onClick={() => deleteWorkoutTest(dispatch, t.id)}>delete</button>
+            </div>
+        ))}
+        <div>
+            <button>get data</button>
+            <div></div>
+        </div>
     </div>
 }

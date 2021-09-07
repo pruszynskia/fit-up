@@ -3,8 +3,8 @@ import {makeStyles} from '@material-ui/core/styles'
 export default makeStyles(theme => ({
     root: {
         display: "flex",
-        flexDirection: "row",
-        height: "10%"
+        alignItems: "center",
+        justifyContent: "space-between"
     },
     container: {
         display: "flex",

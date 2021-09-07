@@ -11,11 +11,11 @@ const CurrentWorkout = () => {
     const classes = useStyles();
     const router = useRouter();
 
-    const data = useSelector((state: any) => state.workout)
+    const {workout} = useSelector((state: any) => state)
     return (
     <div className={classnames(classes.root, classes.column)}>
         {
-            data.map((w: any, id: any) => (
+            workout.map((w: any, id: any) => (
                 <DialogButton key={id} label={w.name}>
                     <WorkoutDetails workout={w} />
                 </DialogButton>
