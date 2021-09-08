@@ -37,7 +37,7 @@ export const addWorkoutTest = async (dispatch: Function, data: any) => {
     }
 }
 
-export const testActionGetData = async (dispatch) => {
+export const testActionGetData = async (dispatch: Function) => {
     try {
         const resp = await axios.get(baseURL + "workouts")
         console.log(resp)
@@ -55,7 +55,7 @@ export const testActionGetData = async (dispatch) => {
     }
 }
 
-export const testActionAddData = async (dispatch, data) => {
+export const testActionAddData = async (dispatch: Function, data: any) => {
     try {
         const resp = await axios.post(baseURL + "workouts", data, {
             headers: {
@@ -82,7 +82,7 @@ export const deleteWorkout = (id: any) => ({
     payload: id
 });
 
-export const deleteWorkoutTest = async (dispatch, id) => {
+export const deleteWorkoutTest = async (dispatch: Function, id: any) => {
     try {
         const resp = await axios.delete(baseURL + "workouts?id=" + id, {})
         console.log(resp)
@@ -159,9 +159,9 @@ export const deleteWorkoutDay = (id: any) => ({
     payload: id
 });
 
-export const deleteWorkoutDayTest = async (dispatch) => {
+export const deleteWorkoutDayTest = async (dispatch: Function, id: any) => {
     try {
-        const resp = await axios.delete(baseURL + "workouts")
+        const resp = await axios.delete(baseURL + "workouts?id=" + id)
         console.log(resp)
         dispatch({
             type: DELETE_WORKOUT_DAY,
