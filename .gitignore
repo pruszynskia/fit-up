@@ -1,6 +1,6 @@
 ## CLIENT
 client/node_modules
-client/.next/
+client/.next
 client/out/
 build/build
 
@@ -15,3 +15,4 @@ server/dist
 .env.test.local
 .env.production.local
 
+db

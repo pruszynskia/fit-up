@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 
@@ -15,6 +15,7 @@ import {
 } from '@material-ui/core';
 
 import {v4} from 'uuid'
+import { addWorkoutTest, editWorkoutTest } from '../../redux/actions';
 
 interface WorkoutFormProps {
     handleClose: Function;
@@ -47,20 +48,32 @@ const WorkoutForm = ({handleClose, data}: WorkoutFormProps) => {
 
     
 
+    // const handleSubmit = (e: any) => {
+    //     e.preventDefault();
+
+    //     if(edit) {
+    //         dispatch({
+    //             type: 'EDIT_WORKOUT',
+    //             payload: formData
+    //         });
+    //     } else {
+    //         dispatch({
+    //             type: 'ADD_WORKOUT',
+    //             payload: formData
+    //         });
+    //     };
+    //     handleClose();
+    // };
+
     const handleSubmit = (e: any) => {
         e.preventDefault();
 
         if(edit) {
-            dispatch({
-                type: 'EDIT_WORKOUT',
-                payload: formData
-            });
+            editWorkoutTest(dispatch, formData)
         } else {
-            dispatch({
-                type: 'ADD_WORKOUT',
-                payload: formData
-            });
-        };
+            console.log(formData)
+            addWorkoutTest(dispatch, formData)
+        }
         handleClose();
     };
 

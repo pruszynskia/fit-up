@@ -12,19 +12,26 @@ export default function Temp() {
         testActionGetData(dispatch)
     }, [])
     return <div>
-        <button onClick={() => testActionAddData(dispatch, {
-            id: "123",
-            name: "new test item"
-        })}>test add</button>
-        {test.map((t: any) => (
-            <div>
-                <span>{t.name}</span>
-                <button onClick={() => deleteWorkoutTest(dispatch, t.id)}>delete</button>
-            </div>
-        ))}
+        <button 
+            onClick={() => testActionAddData(dispatch, {
+                id: "123",
+                name: "new test item"
+            })}
+        >
+            test add
+        </button>
+
+        <div>
+            {test.map((t: any, id: any) => (
+                <div key={id}>
+                    <span>{t.name}</span>
+                    <button onClick={() => deleteWorkoutTest(dispatch, t.id)}>delete</button>
+                </div>
+            ))}
+        </div>
+
         <div>
             <button>get data</button>
-            <div></div>
         </div>
     </div>
 }

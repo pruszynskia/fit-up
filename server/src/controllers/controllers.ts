@@ -35,11 +35,8 @@ const getWorkoutById = async (req: Request, res: Response, next: NextFunction) =
 
 const addWorkout = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { id, name } = req.body;
-
         const newWorkout = await new Workout({
-            id,
-            name
+            ...req.body
         }).save()
 
         res.status(201).json({

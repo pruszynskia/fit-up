@@ -20,7 +20,7 @@ const WorkoutDetails = ({workout}: WorkoutDetailsProps) => {
     const classes = useStyles();
 
     const bodyParts = ["chest", "back", "arm", "triceps", "biceps", "legs", "calfes", "abs"];
-
+    console.log(workout)
     return (
         <div className={classnames(classes.root)}>
             <span className={classnames(
