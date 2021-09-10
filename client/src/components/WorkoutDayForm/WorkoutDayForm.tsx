@@ -15,6 +15,7 @@ import {
     TextField
 } from '@material-ui/core';
 import { RootState, Workout, WorkoutDayDetails, WorkoutDayExerciseDetails } from "../../lib/types";
+import { addWorkoutDayTest, editWorkoutDayTest } from "../../redux/actions";
 
 interface WorkoutDayForm {
     data?: WorkoutDayDetails;
@@ -67,22 +68,33 @@ export default function WorkoutDayForm({ data, date, handleCloseF }: WorkoutDayF
         })
     };
 
+    // const handleSubmit = (e: any) => {
+    //     e.preventDefault();
+
+    //     if(edit) {
+    //         dispatch({
+    //             type: "EDIT_WORKOUT_DAY",
+    //             payload: workoutDayFormData
+    //         })
+    //     } else {
+    //         dispatch({
+    //             type: "ADD_WORKOUT_DAY",
+    //             payload: workoutDayFormData
+    //         });
+    //     };
+    //     handleCloseF();
+    // }
+    
     const handleSubmit = (e: any) => {
         e.preventDefault();
 
         if(edit) {
-            dispatch({
-                type: "EDIT_WORKOUT_DAY",
-                payload: workoutDayFormData
-            })
+            editWorkoutDayTest(dispatch, workoutDayFormData)
         } else {
-            dispatch({
-                type: "ADD_WORKOUT_DAY",
-                payload: workoutDayFormData
-            });
-        };
+            addWorkoutDayTest(dispatch, workoutDayFormData)
+        }
         handleCloseF();
-    }
+    };
 
     console.log("workouts", workouts[0]?.id)
     console.log("workoutDayFormData", workoutDayFormData)
@@ -209,4 +221,4 @@ export default function WorkoutDayForm({ data, date, handleCloseF }: WorkoutDayF
             </form>
         </div>
     )
-} 
+}

@@ -16,4 +16,4 @@ let workoutDayDetailsSchema = new mongoose.Schema({
     }]
 });
 
-export const Workout = mongoose.model("WorkoutDayDetails", workoutDayDetailsSchema);
+export const WorkoutDayDetails = mongoose.model("WorkoutDayDetails", workoutDayDetailsSchema);
