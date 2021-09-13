@@ -1,6 +1,7 @@
 ## CLIENT
 client/node_modules
 client/.next
+client/.vscode
 client/out/
 build/build
 
