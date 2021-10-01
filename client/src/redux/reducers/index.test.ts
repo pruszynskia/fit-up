@@ -1,4 +1,4 @@
-import rootReducer from ".";
+import rootReducer from "./index";
 import * as actions from '../actions';
 
 describe('root reducer', () => {
@@ -14,42 +14,42 @@ describe('root reducer', () => {
         const addWorkoutAction = {
             type: actions.addWorkoutTest
         };
-        expect(rootReducer({}, addWorkoutAction)).toEqual({ workout: [] })
+        expect(rootReducer( {workout: [], workoutDays: [], test: [] }, addWorkoutAction)).toEqual({ workout: [] })
     });
     
     it('should handle add workout test action', () => {
         const deleteWorkoutAction = {
             type: actions.deleteWorkoutTest
         };
-        expect(rootReducer({}, deleteWorkoutAction)).toEqual({ workout: [] })
+        expect(rootReducer({ workout: [], workoutDays: [], test: [] }, deleteWorkoutAction)).toEqual({ workout: [] })
     });
     
     it('should handle add workout test action', () => {
         const editWorkoutAction = {
             type: actions.editWorkoutTest
         };
-        expect(rootReducer({}, editWorkoutAction)).toEqual({ workout: [] })
+        expect(rootReducer({ workout: [], workoutDays: [], test: [] }, editWorkoutAction)).toEqual({ workout: [] })
     });
     
     it('should handle add workout day test action', () => {
         const addWorkoutDayAction = {
             type: actions.addWorkoutDayTest
         };
-        expect(rootReducer({}, addWorkoutDayAction)).toEqual({ workoutDay: [] })
+        expect(rootReducer({ workout: [], workoutDays: [], test: [] }, addWorkoutDayAction)).toEqual({ workoutDay: [] })
     });
     
     it('should handle add workout day test action', () => {
         const deleteWorkoutDayAction = {
             type: actions.deleteWorkoutDayTest
         };
-        expect(rootReducer({}, deleteWorkoutDayAction)).toEqual({ workoutDay: [] })
+        expect(rootReducer({ workout: [], workoutDays: [], test: [] }, deleteWorkoutDayAction)).toEqual({ workoutDay: [] })
     });
     
     it('should handle add workout day test action', () => {
         const editWorkoutDayAction = {
             type: actions.editWorkoutDayTest
         };
-        expect(rootReducer({}, editWorkoutDayAction)).toEqual({ workoutDay: [] })
+        expect(rootReducer({ workout: [], workoutDays: [], test: [] }, editWorkoutDayAction)).toEqual({ workoutDay: [] })
     });
 
     
