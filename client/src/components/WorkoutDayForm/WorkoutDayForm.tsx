@@ -20,7 +20,7 @@ import { addWorkoutDayTest, editWorkoutDayTest } from "../../redux/actions";
 interface WorkoutDayForm {
     data?: WorkoutDayDetails;
     date: moment.Moment;
-    handleCloseF: Function
+    handleCloseF: () => void
 }
 
 export default function WorkoutDayForm({ data, date, handleCloseF }: WorkoutDayForm) {
