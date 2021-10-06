@@ -1,7 +1,6 @@
-import moment from 'moment';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-
+import moment from 'moment';
 import WorkoutDayForm from './WorkoutDayForm';
 
 interface WorkoutDayForm {
@@ -13,7 +12,7 @@ interface WorkoutDayForm {
 describe.skip("Workout day form", () => {
 
     it("Should render as expected", () => {
-        let date: any;
+        let date = moment();
         let handleCloseF = () => handleCloseF
 
         const tree = TestRenderer
