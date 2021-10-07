@@ -1,7 +1,10 @@
 import React from "react";
-import TestRenderer from "react-test-renderer";
+import renderer from "react-test-renderer";
 import moment from "moment";
 import WorkoutDayForm from "./WorkoutDayForm";
+
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 
 interface WorkoutDayForm {
   // data?: WorkoutDayDetails;
@@ -14,8 +17,27 @@ describe("Workout day form", () => {
     let date = moment();
     let handleCloseF = () => handleCloseF;
 
-    const tree = TestRenderer.create(
+    const mockStore = configureStore()
+    let store;
+
+    const initialState = {
+      workout: [{
+        id: 1,
+        workoutID: 1,
+        workoutName: "name",
+        date: "01012021",
+        exercises: [{
+          name: "exercise 1",
+          bodyPart: "body part 1"
+        }]
+      }]
+    }
+
+    store = mockStore(initialState)
+    const tree = renderer.create(
+      <Provider store={store}>
       <WorkoutDayForm date={date} handleCloseF={handleCloseF} />
+      </Provider>
     ).toJSON();
     expect(tree).toMatchSnapshot();
   });

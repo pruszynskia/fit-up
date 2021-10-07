@@ -1,0 +1,228 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Workout day form Should render as expected 1`] = `
+<div
+  className="makeStyles-root-1"
+>
+  <span>
+    ADD WORKOUT
+  </span>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="makeStyles-container-2 makeStyles-column-3"
+    >
+      <span>
+        07.10.2021
+      </span>
+      <div
+        className="MuiFormControl-root"
+      >
+        <label
+          className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+          data-shrink={false}
+        >
+          Workout
+        </label>
+        <div
+          className="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+          onClick={[Function]}
+        >
+          <div
+            aria-haspopup="listbox"
+            className="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            role="button"
+            tabIndex={0}
+          >
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "&#8203;",
+                }
+              }
+            />
+          </div>
+          <input
+            aria-hidden={true}
+            className="MuiSelect-nativeInput"
+            onAnimationStart={[Function]}
+            onChange={[Function]}
+            required={false}
+            tabIndex={-1}
+            value=""
+          />
+          <svg
+            aria-hidden={true}
+            className="MuiSvgIcon-root MuiSelect-icon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 10l5 5 5-5z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        className="makeStyles-container-2 makeStyles-column-3"
+      >
+        <div
+          className="makeStyles-container-2 makeStyles-row-4"
+        >
+          <span>
+            exercise 1
+          </span>
+          <div
+            className="MuiFormControl-root MuiTextField-root makeStyles-offset-5"
+          >
+            <label
+              className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink={true}
+            >
+              Weight
+            </label>
+            <div
+              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+              onClick={[Function]}
+            >
+              <input
+                aria-invalid={false}
+                autoFocus={false}
+                className="MuiInputBase-input MuiOutlinedInput-input"
+                disabled={false}
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                type="number"
+                value={0}
+              />
+              <fieldset
+                aria-hidden={true}
+                className="PrivateNotchedOutline-root-6 MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  className="PrivateNotchedOutline-legendLabelled-8 PrivateNotchedOutline-legendNotched-9"
+                >
+                  <span>
+                    Weight
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+          </div>
+          <div
+            className="MuiFormControl-root MuiTextField-root makeStyles-offset-5"
+          >
+            <label
+              className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink={true}
+            >
+              Reps
+            </label>
+            <div
+              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+              onClick={[Function]}
+            >
+              <input
+                aria-invalid={false}
+                autoFocus={false}
+                className="MuiInputBase-input MuiOutlinedInput-input"
+                disabled={false}
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                type="number"
+                value={0}
+              />
+              <fieldset
+                aria-hidden={true}
+                className="PrivateNotchedOutline-root-6 MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  className="PrivateNotchedOutline-legendLabelled-8 PrivateNotchedOutline-legendNotched-9"
+                >
+                  <span>
+                    Reps
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+          </div>
+          <div
+            className="MuiFormControl-root MuiTextField-root makeStyles-offset-5"
+          >
+            <label
+              className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+              data-shrink={true}
+            >
+              Sets
+            </label>
+            <div
+              className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+              onClick={[Function]}
+            >
+              <input
+                aria-invalid={false}
+                autoFocus={false}
+                className="MuiInputBase-input MuiOutlinedInput-input"
+                disabled={false}
+                onAnimationStart={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                required={false}
+                type="number"
+                value={0}
+              />
+              <fieldset
+                aria-hidden={true}
+                className="PrivateNotchedOutline-root-6 MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  className="PrivateNotchedOutline-legendLabelled-8 PrivateNotchedOutline-legendNotched-9"
+                >
+                  <span>
+                    Sets
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="submit"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          ADD
+        </span>
+      </button>
+    </div>
+  </form>
+</div>
+`;
