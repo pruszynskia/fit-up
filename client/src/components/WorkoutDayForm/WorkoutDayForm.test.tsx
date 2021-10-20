@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
 interface WorkoutDayForm {
-  // data?: WorkoutDayDetails;
   date: moment.Moment;
   handleCloseF: () => void;
 }

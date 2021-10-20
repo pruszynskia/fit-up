@@ -14,7 +14,7 @@ exports[`Workout day form Should render as expected 1`] = `
       className="makeStyles-container-2 makeStyles-column-3"
     >
       <span>
-        07.10.2021
+        20.10.2021
       </span>
       <div
         className="MuiFormControl-root"
