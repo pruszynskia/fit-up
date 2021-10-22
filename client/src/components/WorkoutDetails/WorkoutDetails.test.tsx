@@ -1,47 +1,25 @@
 import React from 'react';
 import renderer from "react-test-renderer";
+
 import WorkoutDetails from "./WorkoutDetails";
 
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
-
-// interface WorkoutDetailsProps {
-//     workout: [{
-//         id: 1,
-//         name: "name",
-//         exercises: [{
-//             name: "name",
-//             bodyPart: "name"
-//         }]
-//     }]
-// }
+jest.mock('./WorkoutDetails', () => 'WorkoutDetail')
 
 describe("Workout details", () => {
-    it("Should render as expected", () => {
-
-        let workout
-
-        const mockStore = configureStore()
-        let store;
-
-        const initialState = {
-            workout: [{
-                id: 1,
-                name: "name",
-                exercises: [{
-                    name: "exercise 1",
-                    bodyPart: "body part 1"
-                }]
+    it("Should render as expected when empty", async () => {
+        const workout = {
+            id: 1,
+            name: "workout 1",
+            exercises: [{
+                name: "exercise 1",
+                bodyPart: "bodypart 1"
             }]
-        }
+        };
 
-        store = mockStore(initialState)
         const tree = renderer.create(
-            <Provider store={store}>
-                <WorkoutDetails workout={workout}/>
-            </Provider>
-        ).toJSON();
-        expect(tree).toMatchSnapshot();
-
+        <WorkoutDetails workout={workout}/>
+        ).toJSON()
+        expect(tree).toMatchSnapshot()
     })
-})
+});
+

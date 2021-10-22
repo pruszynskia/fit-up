@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> with Enzyme Should render App without crushing 1`] = `<App />`;

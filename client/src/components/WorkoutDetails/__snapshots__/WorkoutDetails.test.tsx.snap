@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Workout details Should render as expected when empty 1`] = `
+<WorkoutDetail
+  workout={
+    Object {
+      "exercises": Array [
+        Object {
+          "bodyPart": "bodypart 1",
+          "name": "exercise 1",
+        },
+      ],
+      "id": 1,
+      "name": "workout 1",
+    }
+  }
+/>
+`;

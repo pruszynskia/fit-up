@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CalendarCell/> should render as expected Should render as expected 1`] = `
+<CalendarCell
+  date={"2020-01-01T00:00:00.000Z"}
+  handleDayClick={[Function]}
+/>
+`;
