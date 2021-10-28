@@ -1,18 +1,18 @@
 import React from "react";
-import renderer from 'react-test-renderer';
+import {render} from '@testing-library/react';
 
-import Calendar from '.'
+import Calendar from './Calendar'
+import moment from 'moment'
 
-jest.mock('moment', () => {
-    return () => jest.requireActual('moment')('2020-01-01T00:00:00.000Z');
-});
+jest.mock('moment', () => jest.fn());
 
 describe("<Calendar/> should render as expected", () => {
+
     it("Should render as expected", () => {
 
-        const tree = renderer.create(
-            <Calendar/>
-        ).toJSON();
+        const tree = render(
+            <Calendar  />
+        )
         expect(tree).toMatchSnapshot();
     })
 })

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 
-import * as Moment from "moment";
-import { extendMoment } from "moment-range";
+import * as Moment from 'moment'
+import {extendMoment} from 'moment-range'
 const moment = extendMoment(Moment);
 
 import classnames from "classnames";

@@ -5,9 +5,12 @@ import { useSelector, useDispatch } from "react-redux";
 import useStyles from './ListOfWorkoutDayForm.styles';
 import classnames from 'classnames';
 
-import * as Moment from 'moment'
-import {extendMoment} from 'moment-range'
-const moment = extendMoment(Moment)
+// const Moment = require('moment')
+// import * as Moment from 'moment'
+// import {extendMoment} from 'moment-range'
+
+// const moment = extendMoment(Moment)
+import moment from 'moment'
 
 import {
     Button,
