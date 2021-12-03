@@ -1,6 +1,5 @@
 # FIT-UP
 Fitness Tracker Web App | (in progress)
-- Developed workout progress tracker CRUD web application with built-in calenda
 
 ## Table of contents
 * [General Information](#general-information)
@@ -13,17 +12,17 @@ Fitness Tracker Web App | (in progress)
 Developed workout progress tracker CRUD web application with built-in calenda
 
 ## Technologies
-- React.js
-- Redux
-- Next.js
+- React.js - 17.0.2
+- Redux - ^7.2.4
+- Next.js - ^11.1.2
 - HTML5
 - CSS3.js
 - JavaScript (ES6)
-- Typescript
-- Material-UI
-- Express.js
-- Mongoose
-- JEST
+- Typescript - 4.3.2
+- Material-UI - ^4.11.4
+- Express.js - ^4.17.1
+- Mongoose - ^6.0.4
+- JEST - ^27.2.4
 
 ## Project Status
 Project is still being worked on.
@@ -39,4 +38,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Contact
 Created by Andrzej Pruszynski <br />
 
-<a href="mailto:andrzej.pruszynski90@gmail.com">andrzej.pruszynski90@gmail.com</a> - feel free to contact me!
+andrzej.pruszynski90@gmail.com - feel free to contact me!
