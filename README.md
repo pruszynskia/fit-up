@@ -7,7 +7,6 @@ Fitness Tracker Web App | (in progress)
 * [Technologies](#technologies)
 * [Project Status](#project-status)
 * [Setup](#setup)
-* [Sources](#sources)
 * [Contact](#contact)
 
 ## General Information
@@ -26,7 +25,7 @@ Developed workout progress tracker CRUD web application with built-in calenda
 - Mongoose
 - JEST
 
-# Project Status
+## Project Status
 Project is still being worked on.
 
 ## Setup
