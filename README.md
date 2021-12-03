@@ -32,7 +32,7 @@ Project is still being worked on.
 ## Setup
 To get started, just clone the repository and run `npm install && npm run dev`:
 
-    git clone https://github.com/iaincollins/nextjs-starter.git
+    git clone https://github.com/pruszynskia/fit-up.git
     npm install
     npm run dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
