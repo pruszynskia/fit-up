@@ -30,15 +30,11 @@ Developed workout progress tracker CRUD web application with built-in calenda
 Project is still being worked on.
 
 ## Setup
+To get started, just clone the repository and run `npm install && npm run dev`:
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
+    git clone https://github.com/iaincollins/nextjs-starter.git
+    npm install
+    npm run dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Contact
